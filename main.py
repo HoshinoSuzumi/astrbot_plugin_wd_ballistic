@@ -2,12 +2,12 @@
 
 from astrbot.api.event import AstrMessageEvent, filter
 from astrbot.api.star import Context, Star
+from astrbot.core.star.filter.command import GreedyStr
 
 from .ballistic import (
     BallisticCalculator,
     CoordinateParseError,
     parse_weapon_argument,
-    strip_command_prefix,
 )
 
 
@@ -23,10 +23,12 @@ class WARDOGSBallisticPlugin(Star):
         """WARDOGS 游戏工具。"""
 
     @wardogs.command("bc", alias={"弹道", "弹道计算", "ballistic"})
-    async def wardogs_ballistic(self, event: AstrMessageEvent):
-        """计算 L81 或 SPH-2 的方位、距离与射程密位。"""
+    async def wardogs_ballistic(
+        self, event: AstrMessageEvent, coordinates: GreedyStr
+    ):
+        """输入：[l81|sph2] <炮位> <目标位>；已缓存炮位时只需 <目标位>。"""
         try:
-            weapon, coordinates = parse_weapon_argument(strip_command_prefix(event.message_str))
+            weapon, coordinates = parse_weapon_argument(coordinates)
             result = self.calculator.calculate(
                 user_id=self._user_key(event), weapon=weapon, argument=coordinates
             )

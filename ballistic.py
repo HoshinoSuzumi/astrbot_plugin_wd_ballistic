@@ -125,7 +125,6 @@ class CalculationResult:
         assert self.mortar is not None and self.target is not None
         assert self.bearing is not None and self.distance is not None
         return (
-            "WARDOGS 迫击炮解算\n"
             f"炮位：{self.mortar.display()}\n"
             f"目标：{self.target.display()}\n"
             f"方位角：{self.bearing:.1f}° {compass_direction(self.bearing)}\n"

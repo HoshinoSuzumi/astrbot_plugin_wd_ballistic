@@ -2,7 +2,13 @@ import math
 
 import pytest
 
-from ballistic import BallisticCalculator, CoordinateParseError, Point, parse_points
+from ballistic import (
+    BallisticCalculator,
+    CoordinateParseError,
+    Point,
+    parse_points,
+    strip_command_prefix,
+)
 
 
 @pytest.mark.parametrize(
@@ -16,6 +22,18 @@ from ballistic import BallisticCalculator, CoordinateParseError, Point, parse_po
 )
 def test_parse_supported_coordinate_forms(raw, expected):
     assert parse_points(raw) == expected
+
+
+@pytest.mark.parametrize(
+    "message",
+    [
+        "/wdbc x64.85, y71.98 x74.85, y61.13",
+        "wdbc x64.85,y71.98 x74.85,y61.13",
+        "x64.85,y71.98 y74.85x61.13",
+    ],
+)
+def test_accepts_command_text_preserved_by_adapters(message):
+    assert len(parse_points(strip_command_prefix(message))) == 2
 
 
 @pytest.mark.parametrize("raw", ["x1 2", "x1 y2 3", "a1 y2", "x-1 y2", "1 2 3"])

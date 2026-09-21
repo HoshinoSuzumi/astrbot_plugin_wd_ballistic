@@ -15,6 +15,7 @@ from typing import Callable
 NUMBER = r"[+-]?(?:\d+(?:\.\d*)?|\.\d+)"
 AXIS_VALUE = re.compile(rf"(?i)([xy])\s*[:=]?\s*({NUMBER})")
 BARE_NUMBER = re.compile(NUMBER)
+COMMAND_PREFIX = re.compile(r"^\s*/?wdbc\b", re.IGNORECASE)
 
 # L81 firing table, community-measured for the current WARDOGS build.  Each
 # pair is (range in metres, elevation setting in the weapon's own mil scale).
@@ -216,6 +217,11 @@ def parse_points(text: str) -> list[Point]:
         _point_from_values(*values[index : index + 2])
         for index in range(0, len(values), 2)
     ]
+
+
+def strip_command_prefix(message: str) -> str:
+    """Accept adapters that preserve `/wdbc`, `wdbc`, or only the arguments."""
+    return COMMAND_PREFIX.sub("", message, count=1).strip()
 
 
 def _parse_labelled(matches: list[re.Match[str]]) -> list[Point]:

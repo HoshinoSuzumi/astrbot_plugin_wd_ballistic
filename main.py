@@ -3,7 +3,7 @@
 from astrbot.api.event import AstrMessageEvent, filter
 from astrbot.api.star import Context, Star
 
-from .ballistic import BallisticCalculator, CoordinateParseError
+from .ballistic import BallisticCalculator, CoordinateParseError, strip_command_prefix
 
 
 class WARDOGSBallisticPlugin(Star):
@@ -18,7 +18,7 @@ class WARDOGSBallisticPlugin(Star):
         """计算迫击炮方位和距离：/wdbc <炮位> <目标位>，或 /wdbc <目标位>。"""
         try:
             result = self.calculator.calculate(
-                user_id=self._user_key(event), argument=self._command_argument(event.message_str)
+                user_id=self._user_key(event), argument=strip_command_prefix(event.message_str)
             )
         except CoordinateParseError as exc:
             yield event.plain_result(f"坐标无法识别：{exc}\n{self.calculator.usage}")
@@ -37,8 +37,3 @@ class WARDOGSBallisticPlugin(Star):
     def _user_key(event: AstrMessageEvent) -> str:
         """Namespace the sender ID by platform so IDs cannot collide across adapters."""
         return f"{event.get_platform_name()}:{event.get_sender_id()}"
-
-    @staticmethod
-    def _command_argument(message: str) -> str:
-        """Work with AstrBot adapters that preserve or remove the command text."""
-        return message.strip().removeprefix("/wdbc").strip()

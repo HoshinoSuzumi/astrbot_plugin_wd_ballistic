@@ -4,7 +4,7 @@ desc: |
   为《WARDOGS》提供迫击炮炮位与目标位的方位、距离计算。
   支持 /wdbc 指令和多种 x/y 坐标输入格式，并会按用户缓存炮位 105 分钟。
 short_desc: WARDOGS 迫击炮方位距离计算
-version: 1.0.1
+version: 1.0.2
 author: TimothyYin
 repo: https://github.com/HoshinoSuzumi/astrbot_plugin_wd_ballistic
 astrbot_version: ">=4.13,<5"

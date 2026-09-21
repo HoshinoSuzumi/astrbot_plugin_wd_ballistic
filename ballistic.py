@@ -196,27 +196,22 @@ class BallisticCalculator:
 
 
 def parse_points(text: str) -> list[Point]:
-    """Parse one or two points from labelled or unlabelled WARDOGS coordinates."""
+    """Parse one or two points from mixed labelled/unlabelled coordinates."""
     normalized = text.replace("，", ",").strip()
     if not normalized:
         raise CoordinateParseError("没有提供坐标")
 
     labelled = list(AXIS_VALUE.finditer(normalized))
-    if labelled:
-        residue = AXIS_VALUE.sub(" ", normalized)
-        if BARE_NUMBER.search(residue) or re.search(r"[a-wzA-WZ]", residue):
-            raise CoordinateParseError("请勿混用带轴标记和不带轴标记的坐标")
-        return _parse_labelled(labelled)
-
-    if re.search(r"[a-zA-Z]", normalized):
-        raise CoordinateParseError("轴标记只能使用 x 或 y")
-    values = [float(match.group()) for match in BARE_NUMBER.finditer(normalized)]
-    if len(values) not in (2, 4):
-        raise CoordinateParseError("不带轴标记时需要输入 2 或 4 个数字（按 x y 顺序）")
-    return [
-        _point_from_values(*values[index : index + 2])
-        for index in range(0, len(values), 2)
-    ]
+    tokens: list[tuple[str | None, float]] = []
+    cursor = 0
+    for match in labelled:
+        _append_bare_tokens(normalized[cursor : match.start()], tokens)
+        tokens.append((match.group(1).lower(), float(match.group(2))))
+        cursor = match.end()
+    _append_bare_tokens(normalized[cursor:], tokens)
+    if not tokens:
+        raise CoordinateParseError("没有识别到坐标")
+    return _points_from_tokens(tokens)
 
 
 def strip_command_prefix(message: str) -> str:
@@ -224,19 +219,36 @@ def strip_command_prefix(message: str) -> str:
     return COMMAND_PREFIX.sub("", message, count=1).strip()
 
 
-def _parse_labelled(matches: list[re.Match[str]]) -> list[Point]:
+def _append_bare_tokens(fragment: str, tokens: list[tuple[str | None, float]]) -> None:
+    """Append bare numbers from a gap and reject anything that is not a separator."""
+    residue = BARE_NUMBER.sub("", fragment)
+    if not re.fullmatch(r"[\s,;/|()]*", residue):
+        raise CoordinateParseError("轴标记只能使用 x 或 y，分隔符只能使用空格或标点")
+    tokens.extend((None, float(match.group())) for match in BARE_NUMBER.finditer(fragment))
+
+
+def _points_from_tokens(tokens: list[tuple[str | None, float]]) -> list[Point]:
+    """Build points while treating each bare value as the next missing x/y axis."""
     points: list[Point] = []
     current: dict[str, float] = {}
-    for match in matches:
-        axis, value = match.group(1).lower(), float(match.group(2))
+    for labelled_axis, value in tokens:
+        if labelled_axis is None:
+            if set(current) == {"x", "y"}:
+                points.append(_point_from_values(current["x"], current["y"]))
+                current = {}
+            # A bare coordinate uses x then y; with one labelled axis, fill
+            # whichever axis remains instead (e.g. ``x10 20``).
+            axis = "x" if "x" not in current else "y"
+        else:
+            axis = labelled_axis
         if axis in current:
             if set(current) != {"x", "y"}:
-                raise CoordinateParseError("每组带轴坐标必须各包含一个 x 和一个 y")
+                raise CoordinateParseError("同一组坐标中 x 或 y 重复，无法确定配对")
             points.append(_point_from_values(current["x"], current["y"]))
             current = {}
         current[axis] = value
     if set(current) != {"x", "y"}:
-        raise CoordinateParseError("每组带轴坐标必须各包含一个 x 和一个 y")
+        raise CoordinateParseError("每组坐标必须各包含一个 x 和一个 y")
     points.append(_point_from_values(current["x"], current["y"]))
     if len(points) not in (1, 2):
         raise CoordinateParseError("最多可输入炮位和目标位两组坐标")

@@ -17,6 +17,9 @@ from ballistic import (
         ("x64.85, y71.98", [Point(64.85, 71.98)]),
         ("x64.85,y71.98 y74.85x61.13", [Point(64.85, 71.98), Point(61.13, 74.85)]),
         ("64.85 71.98 74.85,61.13", [Point(64.85, 71.98), Point(74.85, 61.13)]),
+        ("x64.85,y71.98 74.85,61.13", [Point(64.85, 71.98), Point(74.85, 61.13)]),
+        ("64.85,71.98 x74.85,y61.13", [Point(64.85, 71.98), Point(74.85, 61.13)]),
+        ("x64.85 71.98 74.85 y61.13", [Point(64.85, 71.98), Point(74.85, 61.13)]),
         ("Y1 X2", [Point(2, 1)]),
     ],
 )
@@ -36,7 +39,7 @@ def test_accepts_command_text_preserved_by_adapters(message):
     assert len(parse_points(strip_command_prefix(message))) == 2
 
 
-@pytest.mark.parametrize("raw", ["x1 2", "x1 y2 3", "a1 y2", "x-1 y2", "1 2 3"])
+@pytest.mark.parametrize("raw", ["x1 y2 3", "a1 y2", "x-1 y2", "1 2 3"])
 def test_rejects_ambiguous_or_invalid_coordinates(raw):
     with pytest.raises(CoordinateParseError):
         parse_points(raw)

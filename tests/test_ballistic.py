@@ -51,7 +51,8 @@ def test_calculates_clockwise_bearing_from_north_and_distance():
     assert result.distance == 500
     assert result.elevation_mil == pytest.approx(461.43, abs=0.01)
     assert math.isclose(result.bearing, 36.8698976458)
-    assert "东北" in result.format_message()
+    assert "方位角：36.9° NE(东北)" in result.format_message()
+    assert "已缓存" not in result.format_message()
 
 
 def test_interpolates_l81_range_card_at_a_known_example():

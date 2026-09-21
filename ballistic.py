@@ -124,18 +124,13 @@ class CalculationResult:
     def format_message(self) -> str:
         assert self.mortar is not None and self.target is not None
         assert self.bearing is not None and self.distance is not None
-        cache_note = (
-            "（已使用缓存炮位）" if self.cached_mortar else "（炮位已缓存 105 分钟）"
-        )
         return (
             "WARDOGS 迫击炮解算\n"
             f"炮位：{self.mortar.display()}\n"
             f"目标：{self.target.display()}\n"
-            f"方位角：{self.bearing:.1f}° {compass_direction(self.bearing)}"
-            f"（{degrees_to_mils(self.bearing):.0f} MIL）\n"
+            f"方位角：{self.bearing:.1f}° {compass_direction(self.bearing)}\n"
             f"距离：{self.distance:.0f} M（{self.distance / 100:.2f} 地图单位）\n"
-            f"射程密位（L81）：{format_elevation(self.elevation_mil)}\n"
-            f"{cache_note}"
+            f"射程密位（L81）：{format_elevation(self.elevation_mil)}"
         )
 
 
@@ -264,7 +259,16 @@ def _point_from_values(x: float, y: float) -> Point:
 
 
 def compass_direction(bearing: float) -> str:
-    directions = ("北", "东北", "东", "东南", "南", "西南", "西", "西北")
+    directions = (
+        "N(北)",
+        "NE(东北)",
+        "E(东)",
+        "SE(东南)",
+        "S(南)",
+        "SW(西南)",
+        "W(西)",
+        "NW(西北)",
+    )
     return directions[int((bearing + 22.5) // 45) % len(directions)]
 
 
@@ -288,5 +292,5 @@ def interpolate_mil(
 
 def format_elevation(mil: float | None) -> str:
     if mil is None:
-        return "超出 L81 射表 132–684 M"
+        return "超出射表(132–684M)"
     return f"{mil:.0f} MIL"

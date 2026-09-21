@@ -33,8 +33,10 @@ def test_parse_supported_coordinate_forms(raw, expected):
 @pytest.mark.parametrize(
     "message",
     [
-        "/wdbc x64.85, y71.98 x74.85, y61.13",
-        "wdbc x64.85,y71.98 x74.85,y61.13",
+        "/wd bc x64.85, y71.98 x74.85, y61.13",
+        "wardogs ballistic x64.85,y71.98 x74.85,y61.13",
+        "战狗 弹道计算 x64.85,y71.98 x74.85,y61.13",
+        "bc x64.85,y71.98 x74.85,y61.13",
         "x64.85,y71.98 y74.85x61.13",
     ],
 )

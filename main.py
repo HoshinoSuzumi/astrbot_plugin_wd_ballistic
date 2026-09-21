@@ -18,9 +18,13 @@ class WARDOGSBallisticPlugin(Star):
         super().__init__(context)
         self.calculator = BallisticCalculator(cache_ttl_seconds=105 * 60)
 
-    @filter.command("wdbc")
+    @filter.command_group("wd", alias={"wardogs", "战狗"})
+    def wardogs():
+        """WARDOGS 游戏工具。"""
+
+    @wardogs.command("bc", alias={"弹道", "弹道计算", "ballistic"})
     async def wardogs_ballistic(self, event: AstrMessageEvent):
-        """计算迫击炮方位和距离：/wdbc <炮位> <目标位>，或 /wdbc <目标位>。"""
+        """计算 L81 或 SPH-2 的方位、距离与射程密位。"""
         try:
             weapon, coordinates = parse_weapon_argument(strip_command_prefix(event.message_str))
             result = self.calculator.calculate(
@@ -33,7 +37,7 @@ class WARDOGSBallisticPlugin(Star):
         if result.needs_mortar:
             yield event.plain_result(
                 f"尚未保存你的 {result.weapon.title} 炮位坐标。请先使用两组坐标，例如：\n"
-                f"/wdbc {result.weapon.id} x64.85, y71.98 x74.85, y61.13"
+                f"/wd bc {result.weapon.id} x64.85, y71.98 x74.85, y61.13"
             )
             return
 

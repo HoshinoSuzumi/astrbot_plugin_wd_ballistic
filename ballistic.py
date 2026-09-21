@@ -15,7 +15,12 @@ from typing import Callable
 NUMBER = r"[+-]?(?:\d+(?:\.\d*)?|\.\d+)"
 AXIS_VALUE = re.compile(rf"(?i)([xy])\s*[:=]?\s*({NUMBER})")
 BARE_NUMBER = re.compile(NUMBER)
-COMMAND_PREFIX = re.compile(r"^\s*/?wdbc\b", re.IGNORECASE)
+# Accept the complete group command, only its child command, or no command text
+# at all.  Some adapters preserve different portions in ``event.message_str``.
+COMMAND_PREFIX = re.compile(
+    r"^\s*/?(?:(?:wd|wardogs|战狗)\s+)?(?:弹道计算|ballistic|弹道|bc)(?=\s|$)",
+    re.IGNORECASE,
+)
 RANGE_EPSILON = 1e-6
 
 # L81 firing table, community-measured for the current WARDOGS build.  Each
@@ -225,11 +230,11 @@ class BallisticCalculator:
 
     usage = (
         "用法：\n"
-        "- /wdbc [l81|sph2] <炮位> <目标位>\n"
+        "- /wd bc [l81|sph2] <炮位> <目标位>\n"
         "    使用炮位+目标位坐标计算。指定过炮位后，炮位坐标会缓存 105 分钟。\n"
-        "- /wdbc [l81|sph2] <目标位>\n"
+        "- /wd bc [l81|sph2] <目标位>\n"
         "    使用缓存的炮位坐标计算。\n"
-        "示例：/wdbc sph2 x64.85, y71.98 x74.85, y61.13"
+        "示例：/wd bc sph2 x64.85, y71.98 x74.85, y61.13"
     )
 
     def __init__(
@@ -313,7 +318,7 @@ def parse_points(text: str) -> list[Point]:
 
 
 def strip_command_prefix(message: str) -> str:
-    """Accept adapters that preserve `/wdbc`, `wdbc`, or only the arguments."""
+    """Accept adapters that preserve the command path or only its arguments."""
     return COMMAND_PREFIX.sub("", message, count=1).strip()
 
 

@@ -224,8 +224,12 @@ class BallisticCalculator:
     """Stores each user's last mortar location for a bounded amount of time."""
 
     usage = (
-        "用法：/wdbc [l81|sph2] <炮位> <目标位>；已设置炮位后可用 /wdbc [l81|sph2] <目标位>。\n"
-        "示例：/wdbc sph2 x64.85,y71.98 y74.85x61.13"
+        "用法：\n"
+        "- /wdbc [l81|sph2] <炮位> <目标位>\n"
+        "    使用炮位+目标位坐标计算。指定过炮位后，炮位坐标会缓存 105 分钟。\n"
+        "- /wdbc [l81|sph2] <目标位>\n"
+        "    使用缓存的炮位坐标计算。\n"
+        "示例：/wdbc sph2 x64.85, y71.98 x74.85, y61.13"
     )
 
     def __init__(
@@ -332,7 +336,9 @@ def _append_bare_tokens(fragment: str, tokens: list[tuple[str | None, float]]) -
     residue = BARE_NUMBER.sub("", fragment)
     if not re.fullmatch(r"[\s,;/|()]*", residue):
         raise CoordinateParseError("轴标记只能使用 x 或 y，分隔符只能使用空格或标点")
-    tokens.extend((None, float(match.group())) for match in BARE_NUMBER.finditer(fragment))
+    tokens.extend(
+        (None, float(match.group())) for match in BARE_NUMBER.finditer(fragment)
+    )
 
 
 def _points_from_tokens(tokens: list[tuple[str | None, float]]) -> list[Point]:

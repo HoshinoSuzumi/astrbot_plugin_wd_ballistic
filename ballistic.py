@@ -16,6 +16,7 @@ NUMBER = r"[+-]?(?:\d+(?:\.\d*)?|\.\d+)"
 AXIS_VALUE = re.compile(rf"(?i)([xy])\s*[:=]?\s*({NUMBER})")
 BARE_NUMBER = re.compile(NUMBER)
 COMMAND_PREFIX = re.compile(r"^\s*/?wdbc\b", re.IGNORECASE)
+RANGE_EPSILON = 1e-6
 
 # L81 firing table, community-measured for the current WARDOGS build.  Each
 # pair is (range in metres, elevation setting in the weapon's own mil scale).
@@ -95,6 +96,81 @@ L81_FIRING_TABLE = (
 )
 
 
+def _table(raw: str) -> tuple[tuple[int, int], ...]:
+    """Decode compact ``range:mil`` firing-table data."""
+    return tuple(tuple(map(int, pair.split(":"))) for pair in raw.split())
+
+
+# Community SPH-2 table from apollyon-sys/wardogs-calculator (MIT), current
+# when this plugin version was released. Values are in metres and sight mils.
+SPH2_LOW_TABLE = _table(
+    "1181:20 1232:30 1283:40 1334:50 1384:60 1433:70 1482:80 1529:90 "
+    "1576:100 1622:110 1666:120 1709:130 1751:140 1792:150 1832:160 "
+    "1870:170 1907:180 1944:190 1979:200 2014:210 2046:220 2079:230 "
+    "2110:240 2139:250 2168:260 2196:270 2223:280 2249:290 2273:300 "
+    "2296:310 2319:320 2341:330 2362:340 2383:350 2403:360 2422:370 "
+    "2439:380 2456:390 2471:400 2485:410 2499:420 2513:430 2526:440 "
+    "2538:450 2550:460 2561:470 2570:480 2579:490 2586:500 2593:510 "
+    "2599:520 2605:530 2610:540 2615:550 2620:560 2623:570 2626:580 "
+    "2628:590 2629:600"
+)
+SPH2_HIGH_TABLE = _table(
+    "2629:610 2629:620 2628:630 2626:640 2624:650 2621:660 2617:670 "
+    "2613:680 2609:690 2604:700 2599:710 2592:720 2584:730 2576:740 "
+    "2567:750 2557:760 2546:770 2536:780 2524:790 2513:800 2501:810 "
+    "2488:820 2474:830 2460:840 2444:850 2429:860 2412:870 2395:880 "
+    "2378:890 2360:900 2342:910 2323:920 2303:930 2282:940 2261:950 "
+    "2239:960 2217:970 2194:980 2171:990 2147:1000 2123:1010 2098:1020 "
+    "2072:1030 2046:1040 2019:1050 1991:1060 1963:1070 1934:1080 "
+    "1905:1090 1875:1100 1844:1110 1813:1120 1782:1130 1750:1140 "
+    "1717:1150 1684:1160 1650:1170 1616:1180 1582:1190 1547:1200 "
+    "1512:1210 1475:1220 1438:1230 1401:1240 1363:1250 1324:1260 "
+    "1285:1270 1245:1280 1205:1290 1165:1300 1124:1310 1083:1320 "
+    "1041:1330 999:1340 956:1350 913:1360 869:1370 825:1380 780:1390"
+)
+
+
+@dataclass(frozen=True)
+class Trajectory:
+    label: str
+    table: tuple[tuple[int, int], ...]
+    min_range: int
+    max_range: int
+
+
+@dataclass(frozen=True)
+class WeaponProfile:
+    id: str
+    title: str
+    aliases: frozenset[str]
+    min_range: int
+    max_range: int
+    trajectories: tuple[Trajectory, ...]
+
+
+L81 = WeaponProfile(
+    id="l81",
+    title="L81 弹道计算",
+    aliases=frozenset({"l81", "迫击炮"}),
+    min_range=132,
+    max_range=684,
+    trajectories=(Trajectory("射程密位（L81）", L81_FIRING_TABLE, 132, 684),),
+)
+SPH2 = WeaponProfile(
+    id="sph2",
+    title="SPH-2 弹道计算",
+    aliases=frozenset({"sph2", "sph-2", "攀枝花", "pzh", "pzh2000", "自火"}),
+    min_range=780,
+    max_range=2629,
+    trajectories=(
+        Trajectory("射程密位(低弹道)", SPH2_LOW_TABLE, 1181, 2629),
+        Trajectory("射程密位(高弹道)", SPH2_HIGH_TABLE, 780, 2629),
+    ),
+)
+WEAPONS = (L81, SPH2)
+DEFAULT_WEAPON = L81
+
+
 class CoordinateParseError(ValueError):
     """Raised when an argument cannot unambiguously yield one or two points."""
 
@@ -110,11 +186,12 @@ class Point:
 
 @dataclass(frozen=True)
 class CalculationResult:
+    weapon: WeaponProfile
     mortar: Point | None
     target: Point | None
     bearing: float | None = None
     distance: float | None = None
-    elevation_mil: float | None = None
+    elevations: tuple[tuple[str, tuple[float, ...]], ...] = ()
     cached_mortar: bool = False
 
     @property
@@ -124,21 +201,31 @@ class CalculationResult:
     def format_message(self) -> str:
         assert self.mortar is not None and self.target is not None
         assert self.bearing is not None and self.distance is not None
-        return (
-            f"炮位：{self.mortar.display()}\n"
-            f"目标：{self.target.display()}\n"
-            f"方位角：{self.bearing:.1f}° {compass_direction(self.bearing)}\n"
-            f"距离：{self.distance:.0f} M\n"
-            f"射程密位（L81）：{format_elevation(self.elevation_mil)}"
-        )
+        lines = [
+            self.weapon.title,
+            f"炮位：{self.mortar.display()}",
+            f"目标：{self.target.display()}",
+            f"方位：{self.bearing:.1f}° {compass_direction(self.bearing)}",
+            f"距离：{self.distance:.0f} M",
+        ]
+        if self.elevations:
+            lines.extend(
+                f"{label}：{format_elevation(mils)}" for label, mils in self.elevations
+            )
+        else:
+            lines.append(
+                f"射程密位({self.weapon.id.upper()})："
+                f"超出射表({self.weapon.min_range}–{self.weapon.max_range}M)"
+            )
+        return "\n".join(lines)
 
 
 class BallisticCalculator:
     """Stores each user's last mortar location for a bounded amount of time."""
 
     usage = (
-        "用法：/wdbc <炮位> <目标位>；已设置炮位后可用 /wdbc <目标位>。\n"
-        "示例：/wdbc x64.85,y71.98 y74.85x61.13 或 /wdbc 64.85 71.98 74.85,61.13"
+        "用法：/wdbc [l81|sph2] <炮位> <目标位>；已设置炮位后可用 /wdbc [l81|sph2] <目标位>。\n"
+        "示例：/wdbc sph2 x64.85,y71.98 y74.85x61.13"
     )
 
     def __init__(
@@ -148,43 +235,56 @@ class BallisticCalculator:
     ) -> None:
         self.cache_ttl_seconds = cache_ttl_seconds
         self.clock = clock
-        self._mortars: dict[str, tuple[Point, float]] = {}
+        self._mortars: dict[tuple[str, str], tuple[Point, float]] = {}
 
-    def calculate(self, user_id: str, argument: str) -> CalculationResult:
+    def calculate(
+        self, user_id: str, weapon: WeaponProfile, argument: str
+    ) -> CalculationResult:
         points = parse_points(argument)
+        cache_key = (user_id, weapon.id)
         if len(points) == 2:
             mortar, target = points
-            self._mortars[user_id] = (mortar, self.clock() + self.cache_ttl_seconds)
-            return self._solve(mortar, target, cached_mortar=False)
+            self._mortars[cache_key] = (mortar, self.clock() + self.cache_ttl_seconds)
+            return self._solve(weapon, mortar, target, cached_mortar=False)
 
-        mortar = self._get_mortar(user_id)
+        mortar = self._get_mortar(cache_key)
         if mortar is None:
-            return CalculationResult(mortar=None, target=points[0])
-        return self._solve(mortar, points[0], cached_mortar=True)
+            return CalculationResult(weapon=weapon, mortar=None, target=points[0])
+        return self._solve(weapon, mortar, points[0], cached_mortar=True)
 
-    def _get_mortar(self, user_id: str) -> Point | None:
-        cached = self._mortars.get(user_id)
+    def _get_mortar(self, cache_key: tuple[str, str]) -> Point | None:
+        cached = self._mortars.get(cache_key)
         if cached is None:
             return None
         mortar, expires_at = cached
         if self.clock() >= expires_at:
-            del self._mortars[user_id]
+            del self._mortars[cache_key]
             return None
         return mortar
 
     @staticmethod
-    def _solve(mortar: Point, target: Point, cached_mortar: bool) -> CalculationResult:
+    def _solve(
+        weapon: WeaponProfile, mortar: Point, target: Point, cached_mortar: bool
+    ) -> CalculationResult:
         dx = target.x - mortar.x
         dy = target.y - mortar.y
         # atan2(east, north): 0° north, 90° east, increasing clockwise.
         bearing = math.degrees(math.atan2(dx, dy)) % 360
         distance = math.hypot(dx, dy) * 100
+        elevations = tuple(
+            (trajectory.label, lookup_mils(distance, trajectory))
+            for trajectory in weapon.trajectories
+            if trajectory.min_range - RANGE_EPSILON
+            <= distance
+            <= trajectory.max_range + RANGE_EPSILON
+        )
         return CalculationResult(
+            weapon=weapon,
             mortar=mortar,
             target=target,
             bearing=bearing,
             distance=distance,
-            elevation_mil=interpolate_mil(distance, L81_FIRING_TABLE),
+            elevations=elevations,
             cached_mortar=cached_mortar,
         )
 
@@ -211,6 +311,20 @@ def parse_points(text: str) -> list[Point]:
 def strip_command_prefix(message: str) -> str:
     """Accept adapters that preserve `/wdbc`, `wdbc`, or only the arguments."""
     return COMMAND_PREFIX.sub("", message, count=1).strip()
+
+
+def parse_weapon_argument(argument: str) -> tuple[WeaponProfile, str]:
+    """Take an optional case-insensitive weapon token from a command argument."""
+    parts = argument.strip().split(maxsplit=1)
+    head = parts[0] if parts else ""
+    tail = parts[1] if len(parts) == 2 else ""
+    normalized = head.casefold()
+    for weapon in WEAPONS:
+        if normalized in weapon.aliases:
+            if not tail.strip():
+                raise CoordinateParseError(f"请在 {weapon.title} 后输入坐标")
+            return weapon, tail.strip()
+    return DEFAULT_WEAPON, argument.strip()
 
 
 def _append_bare_tokens(fragment: str, tokens: list[tuple[str | None, float]]) -> None:
@@ -276,20 +390,22 @@ def degrees_to_mils(degrees: float) -> float:
     return degrees * 6400 / 360
 
 
-def interpolate_mil(
-    distance: float, table: tuple[tuple[int, int], ...]
-) -> float | None:
-    """Return an elevation mil interpolated from a range card, if in range."""
-    if not table[0][0] <= distance <= table[-1][0]:
-        return None
-    for (low_distance, low_mil), (high_distance, high_mil) in zip(table, table[1:]):
-        if low_distance <= distance <= high_distance:
+def lookup_mils(distance: float, trajectory: Trajectory) -> tuple[float, ...]:
+    """Look up a trajectory with linear interpolation and preserve exact ties."""
+    exact = tuple(
+        mil
+        for range_m, mil in trajectory.table
+        if math.isclose(range_m, distance, abs_tol=RANGE_EPSILON)
+    )
+    if exact:
+        return exact
+    ordered = sorted(trajectory.table)
+    for (low_distance, low_mil), (high_distance, high_mil) in zip(ordered, ordered[1:]):
+        if low_distance < distance < high_distance:
             ratio = (distance - low_distance) / (high_distance - low_distance)
-            return low_mil + ratio * (high_mil - low_mil)
-    return float(table[-1][1])
+            return (low_mil + ratio * (high_mil - low_mil),)
+    raise ValueError("distance must be within trajectory range")
 
 
-def format_elevation(mil: float | None) -> str:
-    if mil is None:
-        return "超出射表(132–684M)"
-    return f"{mil:.0f} MIL"
+def format_elevation(mils: tuple[float, ...]) -> str:
+    return "–".join(f"{mil:.0f}" for mil in sorted(mils)) + " MIL"

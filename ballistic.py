@@ -128,7 +128,7 @@ class CalculationResult:
             f"炮位：{self.mortar.display()}\n"
             f"目标：{self.target.display()}\n"
             f"方位角：{self.bearing:.1f}° {compass_direction(self.bearing)}\n"
-            f"距离：{self.distance:.0f} M（{self.distance / 100:.2f} 地图单位）\n"
+            f"距离：{self.distance:.0f} M\n"
             f"射程密位（L81）：{format_elevation(self.elevation_mil)}"
         )
 

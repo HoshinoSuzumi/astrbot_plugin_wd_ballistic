@@ -3,7 +3,7 @@
 from astrbot.api.event import AstrMessageEvent, filter
 from astrbot.api.star import Context, Star
 
-from ballistic import BallisticCalculator, CoordinateParseError
+from .ballistic import BallisticCalculator, CoordinateParseError
 
 
 class WARDOGSBallisticPlugin(Star):

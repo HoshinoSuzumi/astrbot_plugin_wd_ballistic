@@ -24,18 +24,17 @@ RANGE_CARD_TEMPLATE = """
     background: linear-gradient(135deg, #19251d, #101713 62%);
     border: 1px solid #56634e;
   }
-  .eyebrow { color: #b7c79b; font-size: 16px; letter-spacing: 2px; }
   h1 { margin: 8px 0 24px; font-size: 31px; letter-spacing: 1px; }
   .summary {
     display: flex;
-    gap: 26px;
+    gap: 12px;
     padding: 14px 16px;
     background: #0b100d;
     border-left: 4px solid #91a96d;
     color: #cbd7c2;
-    font-size: 18px;
+    font-size: 12px;
   }
-  .summary strong { color: #f5f8ef; }
+  .summary strong { color: #f5f8ef; font-size: 18px; }
   .trajectory { margin-top: 32px; }
   .trajectory-title { display: flex; justify-content: space-between; font-size: 20px; }
   .trajectory-title .setting { color: #ffcf70; font-weight: 700; }
@@ -52,11 +51,9 @@ RANGE_CARD_TEMPLATE = """
     font-size: 19px; font-weight: 700; }
   .pointer .arrow { position: absolute; left: -2px; top: -7px; width: 0; height: 0;
     border-top: 7px solid transparent; border-bottom: 7px solid transparent; border-left: 12px solid #e15140; }
-  .relation { margin: 0 16px; color: #aebaa6; font-size: 15px; text-align: center; }
   .footnote { margin-top: 30px; color: #93a08d; font-size: 14px; }
 </style>
 <section class="card">
-  <div class="eyebrow">WARDOGS · FIRE CONTROL</div>
   <h1>{{ weapon }} 瞄准标尺</h1>
   <div class="summary">
     <span>方位 <strong>{{ bearing }}</strong></span>
@@ -80,7 +77,6 @@ RANGE_CARD_TEMPLATE = """
       </div>
       {% endfor %}
     </div>
-    <div class="relation">目标位置按相邻射表刻度线性插值；标尺向上下各延伸最多两个刻度。</div>
   </div>
   {% endfor %}
   <div class="footnote">标尺按当前武器射表插值；未计算高差、地形或车辆姿态修正。</div>
@@ -121,7 +117,9 @@ def build_range_card_context(result: CalculationResult) -> dict[str, Any]:
     }
 
 
-def _local_ruler(table_mils: tuple[int, ...], target_mils: tuple[float, ...]) -> dict[str, Any]:
+def _local_ruler(
+    table_mils: tuple[int, ...], target_mils: tuple[float, ...]
+) -> dict[str, Any]:
     """Build a short local scale around the target's enclosing table marks."""
     values = tuple(sorted(set(table_mils)))
     primary = target_mils[0]
@@ -151,9 +149,7 @@ def _local_ruler(table_mils: tuple[int, ...], target_mils: tuple[float, ...]) ->
                 "label": str(mil),
                 "position": round(position(mil), 3),
                 "is_bound": mil in bounds,
-                "opacity": _tick_opacity(
-                    values.index(mil), lower_index, upper_index
-                ),
+                "opacity": _tick_opacity(values.index(mil), lower_index, upper_index),
             }
             for mil in reversed(displayed)
         ),

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/HoshinoSuzumi/astrbot_plugin_wd_ballistic/schemas/wardogs_ballistics.schema.json",
+  "title": "WARDOGS ballistics calculator payload",
+  "type": "object",
+  "required": ["weapons", "roundsByCaliber", "reference", "helmets", "bodyArmor"],
+  "properties": {
+    "weapons": {"type": "array", "items": {"$ref": "#/$defs/weapon"}},
+    "roundsByCaliber": {"type": "object", "additionalProperties": {"type": "array", "items": {"$ref": "#/$defs/round"}}},
+    "helmets": {"type": "array", "items": {"$ref": "#/$defs/armor"}},
+    "bodyArmor": {"type": "array", "items": {"$ref": "#/$defs/armor"}},
+    "reference": {"type": "object", "required": ["hitLocationMultipliers", "armorRulesByContext", "infantryRules"]}
+  },
+  "$defs": {
+    "point": {"type": "object", "required": ["rangeM", "multiplier"], "properties": {"rangeM": {"type": "number"}, "multiplier": {"type": "number"}}},
+    "weapon": {"type": "object", "required": ["id", "name", "archetype", "caliberKey", "hitLocationProfile"], "properties": {"id": {"type": "string"}, "name": {"type": "string"}, "archetype": {"type": "string"}, "caliberKey": {"type": "string"}, "hitLocationProfile": {"type": "string"}, "damageFalloff": {"oneOf": [{"type": "array", "items": {"$ref": "#/$defs/point"}}, {"const": "$undefined"}]}}},
+    "round": {"type": "object", "required": ["id", "caliberKey", "ammoType", "baseDamage", "penetrationEffectiveness"], "properties": {"baseDamage": {"type": "number"}, "pellets": {"oneOf": [{"type": "integer"}, {"const": "$undefined"}]}, "penetrationEffectiveness": {"type": "number"}}},
+    "armor": {"type": "object", "required": ["id", "name", "kind", "coveredHitLocations", "damageContextTag"], "properties": {"damageReductionPct": {"oneOf": [{"type": "number"}, {"const": "$undefined"}]}, "durability": {"oneOf": [{"type": "number"}, {"const": "$undefined"}]}}}
+  }
+}

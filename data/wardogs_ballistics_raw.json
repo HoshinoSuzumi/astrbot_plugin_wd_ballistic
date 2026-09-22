@@ -1,0 +1,4309 @@
+{
+  "ammoTypes": [
+    {
+      "ammoType": "FMJ",
+      "icon": "https://cdn.pixel6.tools/wardogs/images/icons/t_ui_icon_ammobox_5_56x45mm_fmj.webp?v=1788285208",
+      "name": "5.56x45mm"
+    },
+    {
+      "ammoType": "HollowPoint",
+      "icon": "https://cdn.pixel6.tools/wardogs/images/icons/t_ui_icon_ammobox_5_56x45mm_hp.webp?v=1788285208",
+      "name": "5.56mm 肉伤 (HP)"
+    },
+    {
+      "ammoType": "ArmorPiercing",
+      "icon": "https://cdn.pixel6.tools/wardogs/images/icons/t_ui_icon_ammobox_5_56x45mm_ap.webp?v=1788285208",
+      "name": "5.56mm 穿甲 (AP)"
+    },
+    {
+      "ammoType": "Buckshot",
+      "icon": "https://cdn.pixel6.tools/wardogs/images/icons/t_ui_icon_ammobox_12g_slug_fmj.webp?v=1788285208",
+      "name": "12 号 7mm 鹿弹"
+    },
+    {
+      "ammoType": "Slug",
+      "icon": "https://cdn.pixel6.tools/wardogs/images/icons/t_ui_icon_ammobox_12g_slug_green.webp?v=1788285208",
+      "name": "12 号膛线独头弹"
+    },
+    {
+      "ammoType": "Arrow",
+      "icon": "https://cdn.pixel6.tools/wardogs/images/icons/t_ui_magazine_bow_bc.webp?v=1788285208",
+      "name": "阔头箭"
+    }
+  ],
+  "bodyArmor": [
+    {
+      "coveredHitLocations": [
+        "Torso.Lower",
+        "Torso.Middle",
+        "Torso.Upper"
+      ],
+      "damageContextTag": "Meta.Damage.Armor.Light",
+      "damageReductionPct": 30,
+      "durability": 200,
+      "icon": "https://cdn.pixel6.tools/wardogs/images/icons/t_ui_vendor_armor_001a.webp?v=1788285208",
+      "id": "Id.Item.LightArmor",
+      "kind": "armor",
+      "name": "1 级防弹衣",
+      "tierKey": "Light"
+    },
+    {
+      "coveredHitLocations": [
+        "Torso.Lower",
+        "Torso.Middle",
+        "Torso.Upper"
+      ],
+      "damageContextTag": "Meta.Damage.Armor.Medium",
+      "damageReductionPct": 40,
+      "durability": 220,
+      "icon": "https://cdn.pixel6.tools/wardogs/images/icons/t_ui_vendor_armor_002a.webp?v=1788285208",
+      "id": "Id.Item.MediumArmor",
+      "kind": "armor",
+      "name": "2 级防弹衣",
+      "tierKey": "Medium"
+    },
+    {
+      "coveredHitLocations": [
+        "Torso.Lower",
+        "Torso.Middle",
+        "Torso.Upper"
+      ],
+      "damageContextTag": "Meta.Damage.Armor.Heavy",
+      "damageReductionPct": 55,
+      "durability": 250,
+      "icon": "https://cdn.pixel6.tools/wardogs/images/icons/t_ui_vendor_armor_003a.webp?v=1788285208",
+      "id": "Id.Item.HeavyArmor",
+      "kind": "armor",
+      "name": "3 级防弹衣",
+      "tierKey": "Heavy"
+    },
+    {
+      "coveredHitLocations": [
+        "Torso.Lower",
+        "Torso.Middle",
+        "Torso.Upper",
+        "Pelvis",
+        "Arm.Upper"
+      ],
+      "damageContextTag": "Meta.Damage.Armor.SuperHeavy",
+      "damageReductionPct": 65,
+      "durability": 300,
+      "icon": "https://cdn.pixel6.tools/wardogs/images/icons/t_ui_vendor_armor_004a.webp?v=1788285208",
+      "id": "Id.Item.SuperHeavyArmor",
+      "kind": "armor",
+      "name": "4 级防弹衣",
+      "tierKey": "SuperHeavy"
+    },
+    {
+      "coveredHitLocations": [],
+      "damageContextTag": "Meta.Damage.Armor.Ghillie",
+      "damageReductionPct": "$undefined",
+      "durability": "$undefined",
+      "icon": "https://cdn.pixel6.tools/wardogs/images/icons/t_ui_icon_ghillie_body_bc.webp?v=1788285208",
+      "id": "Id.Item.GhillieArmor",
+      "kind": "armor",
+      "name": "吉利迷彩服",
+      "tierKey": "Ghillie"
+    }
+  ],
+  "gameLabels": {
+    "Item.Ammo.Type.Buckshot": "BCK",
+    "Item.Ammo.Type.Slug": "SLG",
+    "Item.Archetype.AR": "突击步枪",
+    "Item.Archetype.Bow": "弓",
+    "Item.Archetype.DMR": "DMR",
+    "Item.Archetype.LMG": "轻机枪",
+    "Item.Archetype.Launcher": "发射器",
+    "Item.Archetype.Pistol": "手枪",
+    "Item.Archetype.SMG": "冲锋枪",
+    "Item.Archetype.Shotgun": "霰弹枪",
+    "Item.Archetype.Sniper": "狙击步枪",
+    "Item.Caliber.12g": "12 号",
+    "Item.Caliber.308Win": ".308 Win",
+    "Item.Caliber.40mm": "40mm",
+    "Item.Caliber.45ACP": ".45 ACP",
+    "Item.Caliber.45Colt": ".45 Colt",
+    "Item.Caliber.50AE": "50AE",
+    "Item.Caliber.50Cal": ".50Cal",
+    "Item.Caliber.545mm": "5.45x39mm",
+    "Item.Caliber.556mm": "5.56x45mm",
+    "Item.Caliber.762mm": "7.62x39mm",
+    "Item.Caliber.762x54mm": "7.62x54mm",
+    "Item.Caliber.84mm": "84mm",
+    "Item.Caliber.93mm": "93mm",
+    "Item.Caliber.9mm": "9x19mm",
+    "Item.Caliber.Arrow": "Arrow",
+    "Vendor.Category.Ammo.Type.ArmorPiercing": "穿甲 (AP)",
+    "Vendor.Category.Ammo.Type.FMJ": "标准 (FMJ)",
+    "Vendor.Category.Ammo.Type.HollowPoint": "肉伤 (HP)"
+  },
+  "groups": [
+    {
+      "archetype": "AR",
+      "weaponIds": [
+        "Id.Item.A91",
+        "Id.Item.WEPN_033",
+        "Id.Item.KH2002",
+        "Id.Item.TAR21",
+        "Id.Item.AK74M",
+        "Id.Item.WEPN_029",
+        "Id.Item.M4",
+        "Id.Item.WEPN_030"
+      ]
+    },
+    {
+      "archetype": "SMG",
+      "weaponIds": [
+        "Id.Item.MP9",
+        "Id.Item.SMG_03",
+        "Id.Item.WEPN_028",
+        "Id.Item.Vector"
+      ]
+    },
+    {
+      "archetype": "Sniper",
+      "weaponIds": [
+        "Id.Item.WEPN_035",
+        "Id.Item.Mosin",
+        "Id.Item.SV98",
+        "Id.Item.MK22",
+        "Id.Item.SR_04"
+      ]
+    },
+    {
+      "archetype": "DMR",
+      "weaponIds": [
+        "Id.Item.SKS",
+        "Id.Item.SVDM",
+        "Id.Item.RFB"
+      ]
+    },
+    {
+      "archetype": "Pistol",
+      "weaponIds": [
+        "Id.Item.Glock17",
+        "Id.Item.Judge",
+        "Id.Item.WEPN_026",
+        "Id.Item.WEPN_032",
+        "Id.Item.WEPN_027"
+      ]
+    },
+    {
+      "archetype": "Bow",
+      "weaponIds": [
+        "Id.Item.CombatBow"
+      ]
+    },
+    {
+      "archetype": "LMG",
+      "weaponIds": [
+        "Id.Item.M249",
+        "Id.Item.LMG_02"
+      ]
+    },
+    {
+      "archetype": "Shotgun",
+      "weaponIds": [
+        "Id.Item.MP43",
+        "Id.Item.M500"
+      ]
+    },
+    {
+      "archetype": "Launcher",
+      "weaponIds": [
+        "Id.Item.RPG7",
+        "Id.Item.Launcher_04",
+        "Id.Item.CGM4",
+        "Id.Item.MMGL"
+      ]
+    }
+  ],
+  "helmets": [
+    {
+      "coveredHitLocations": [
+        "Head"
+      ],
+      "damageContextTag": "Meta.Damage.Helmet.Light",
+      "damageReductionPct": 30,
+      "durability": 80,
+      "icon": "https://cdn.pixel6.tools/wardogs/images/icons/t_ui_vendor_helmet_001a.webp?v=1788285208",
+      "id": "Id.Item.LightHelmet",
+      "kind": "helmet",
+      "name": "1 级头盔",
+      "tierKey": "Light"
+    },
+    {
+      "coveredHitLocations": [
+        "Head"
+      ],
+      "damageContextTag": "Meta.Damage.Helmet.Medium",
+      "damageReductionPct": 40,
+      "durability": 100,
+      "icon": "https://cdn.pixel6.tools/wardogs/images/icons/t_ui_vendor_helmet_002a.webp?v=1788285208",
+      "id": "Id.Item.MediumHelmet",
+      "kind": "helmet",
+      "name": "2 级头盔",
+      "tierKey": "Medium"
+    },
+    {
+      "coveredHitLocations": [
+        "Head",
+        "Neck"
+      ],
+      "damageContextTag": "Meta.Damage.Helmet.Heavy",
+      "damageReductionPct": 55,
+      "durability": 180,
+      "icon": "https://cdn.pixel6.tools/wardogs/images/icons/t_ui_vendor_helmet_003a.webp?v=1788285208",
+      "id": "Id.Item.HeavyHelmet",
+      "kind": "helmet",
+      "name": "3 级头盔",
+      "tierKey": "Heavy"
+    },
+    {
+      "coveredHitLocations": [
+        "Head",
+        "Neck"
+      ],
+      "damageContextTag": "Meta.Damage.Helmet.SuperHeavy",
+      "damageReductionPct": 65,
+      "durability": 200,
+      "icon": "https://cdn.pixel6.tools/wardogs/images/icons/t_ui_vendor_helmet_004a.webp?v=1788285208",
+      "id": "Id.Item.SuperHeavyHelmet",
+      "kind": "helmet",
+      "name": "4 级头盔",
+      "tierKey": "SuperHeavy"
+    },
+    {
+      "coveredHitLocations": [],
+      "damageContextTag": "Meta.Damage.Helmet.Ghillie",
+      "damageReductionPct": "$undefined",
+      "durability": "$undefined",
+      "icon": "https://cdn.pixel6.tools/wardogs/images/icons/t_ui_icon_ghillie_helmet_bc.webp?v=1788285208",
+      "id": "Id.Item.GhillieHelmet",
+      "kind": "helmet",
+      "name": "吉利迷彩头饰",
+      "tierKey": "Ghillie"
+    }
+  ],
+  "maxEffectiveRangeM": 2000,
+  "reference": {
+    "armorEffectiveness": {
+      "Meta.Damage.AmmoModifier.ArmorPiercing": 0.3,
+      "Meta.Damage.AmmoModifier.ArmorPiercing.Tracer": 0.3,
+      "Meta.Damage.AmmoModifier.FMJ": 1,
+      "Meta.Damage.AmmoModifier.HollowPoint": 1.5,
+      "Meta.Damage.AmmoModifier.HollowPoint.Tracer": 1.5,
+      "Meta.Damage.AmmoModifier.Tracer": 1
+    },
+    "armorEffectivenessByArmsClass": {
+      "Meta.Damage.AmmoModifier.ArmorPiercing": {
+        "Meta.Damage.Arms.High": 0.5,
+        "Meta.Damage.Arms.Medium": 0.6,
+        "Meta.Damage.Arms.Small": 0.7,
+        "Meta.Damage.Arms.Special": 1
+      },
+      "Meta.Damage.AmmoModifier.ArmorPiercing.Tracer": {
+        "Meta.Damage.Arms.High": 0.5,
+        "Meta.Damage.Arms.Medium": 0.6,
+        "Meta.Damage.Arms.Small": 0.7,
+        "Meta.Damage.Arms.Special": 1
+      }
+    },
+    "armorRulesByContext": {
+      "Meta.Damage.Armor": [
+        {
+          "alignment": "$undefined",
+          "amount": -30,
+          "category": "Meta.Damage.Category.AmmoModifier",
+          "customOperation": "$undefined",
+          "hitLocations": "$undefined",
+          "operation": "Percentage_Ongoing",
+          "sourceRequirements": [
+            "Meta.Damage.Bullet",
+            "Meta.Damage.AmmoModifier.HollowPoint"
+          ],
+          "targetRequirements": "$undefined"
+        },
+        {
+          "alignment": "$undefined",
+          "amount": 30,
+          "category": "Meta.Damage.Category.AmmoModifier",
+          "customOperation": "$undefined",
+          "hitLocations": "$undefined",
+          "operation": "Percentage_Ongoing",
+          "sourceRequirements": [
+            "Meta.Damage.Bullet",
+            "Meta.Damage.AmmoModifier.ArmorPiercing"
+          ],
+          "targetRequirements": "$undefined"
+        },
+        {
+          "alignment": "$undefined",
+          "amount": -60,
+          "category": "Meta.Damage.Category.Armor",
+          "customOperation": "$undefined",
+          "hitLocations": "$undefined",
+          "operation": "Percentage_Ongoing",
+          "sourceRequirements": [
+            "Meta.Damage.Bullet"
+          ],
+          "targetRequirements": "$undefined"
+        },
+        {
+          "alignment": "$undefined",
+          "amount": -85,
+          "category": "Meta.Damage.Category.Armor",
+          "customOperation": "$undefined",
+          "hitLocations": "$undefined",
+          "operation": "Percentage_Ongoing",
+          "sourceRequirements": [
+            "Meta.Damage.Explosive"
+          ],
+          "targetRequirements": "$undefined"
+        },
+        {
+          "alignment": "$undefined",
+          "amount": 0,
+          "category": "Meta.Damage.Category.Penetration",
+          "customOperation": "$undefined",
+          "hitLocations": "$undefined",
+          "operation": "Percentage_Ongoing",
+          "sourceRequirements": [
+            "Meta.Damage.Bullet",
+            "Meta.Damage.Armor.Penetrate"
+          ],
+          "targetRequirements": "$undefined"
+        },
+        {
+          "alignment": "$undefined",
+          "amount": -50,
+          "category": "Meta.Damage.Category.Armor",
+          "customOperation": "$undefined",
+          "hitLocations": "$undefined",
+          "operation": "Percentage_Ongoing",
+          "sourceRequirements": [
+            "Meta.Damage.DamageType.Melee"
+          ],
+          "targetRequirements": "$undefined"
+        },
+        {
+          "alignment": "$undefined",
+          "amount": -10000,
+          "category": "Meta.Damage.Category.Armor",
+          "customOperation": "$undefined",
+          "hitLocations": "$undefined",
+          "operation": "Percentage_Ongoing",
+          "sourceRequirements": "$undefined",
+          "targetRequirements": [
+            "Meta.Damage.Armor.Ghillie"
+          ]
+        },
+        {
+          "alignment": "$undefined",
+          "amount": -80,
+          "category": "Meta.Damage.Category.AmmoModifier",
+          "customOperation": "$undefined",
+          "hitLocations": "$undefined",
+          "operation": "Percentage_Ongoing",
+          "sourceRequirements": [
+            "Meta.Damage.Bullet.12g.7mmBuckshot"
+          ],
+          "targetRequirements": "$undefined"
+        }
+      ],
+      "Meta.Damage.Armor.Ghillie": [
+        {
+          "alignment": "$undefined",
+          "amount": -100,
+          "category": "Meta.Damage.Category.Armor",
+          "customOperation": "$undefined",
+          "hitLocations": "$undefined",
+          "operation": "Percentage_Ongoing",
+          "sourceRequirements": [
+            "Meta.Damage.Bullet"
+          ],
+          "targetRequirements": "$undefined"
+        },
+        {
+          "alignment": "$undefined",
+          "amount": -100,
+          "category": "Meta.Damage.Category.Armor",
+          "customOperation": "$undefined",
+          "hitLocations": "$undefined",
+          "operation": "Percentage_Ongoing",
+          "sourceRequirements": [
+            "Meta.Damage.Explosive"
+          ],
+          "targetRequirements": "$undefined"
+        },
+        {
+          "alignment": "$undefined",
+          "amount": -100,
+          "category": "Meta.Damage.Category.Armor",
+          "customOperation": "$undefined",
+          "hitLocations": "$undefined",
+          "operation": "Percentage_Ongoing",
+          "sourceRequirements": [
+            "Meta.Damage.Cannon"
+          ],
+          "targetRequirements": "$undefined"
+        },
+        {
+          "alignment": "$undefined",
+          "amount": -100,
+          "category": "Meta.Damage.Category.Armor",
+          "customOperation": "$undefined",
+          "hitLocations": "$undefined",
+          "operation": "Percentage_Ongoing",
+          "sourceRequirements": [
+            "Meta.Damage.DamageType.Impact"
+          ],
+          "targetRequirements": "$undefined"
+        },
+        {
+          "alignment": "$undefined",
+          "amount": -100,
+          "category": "Meta.Damage.Category.Armor",
+          "customOperation": "$undefined",
+          "hitLocations": "$undefined",
+          "operation": "Percentage_Ongoing",
+          "sourceRequirements": [
+            "Meta.Damage.DamageType.Melee"
+          ],
+          "targetRequirements": "$undefined"
+        },
+        {
+          "alignment": "$undefined",
+          "amount": -100,
+          "category": "Meta.Damage.Category.Armor",
+          "customOperation": "$undefined",
+          "hitLocations": "$undefined",
+          "operation": "Percentage_Ongoing",
+          "sourceRequirements": "$undefined",
+          "targetRequirements": "$undefined"
+        }
+      ],
+      "Meta.Damage.Helmet": [
+        {
+          "alignment": "$undefined",
+          "amount": -30,
+          "category": "Meta.Damage.Category.AmmoModifier",
+          "customOperation": "$undefined",
+          "hitLocations": "$undefined",
+          "operation": "Percentage_Ongoing",
+          "sourceRequirements": [
+            "Meta.Damage.Bullet",
+            "Meta.Damage.AmmoModifier.HollowPoint"
+          ],
+          "targetRequirements": "$undefined"
+        },
+        {
+          "alignment": "$undefined",
+          "amount": 30,
+          "category": "Meta.Damage.Category.AmmoModifier",
+          "customOperation": "$undefined",
+          "hitLocations": "$undefined",
+          "operation": "Percentage_Ongoing",
+          "sourceRequirements": [
+            "Meta.Damage.Bullet",
+            "Meta.Damage.AmmoModifier.ArmorPiercing"
+          ],
+          "targetRequirements": "$undefined"
+        },
+        {
+          "alignment": "$undefined",
+          "amount": -60,
+          "category": "Meta.Damage.Category.Armor",
+          "customOperation": "$undefined",
+          "hitLocations": "$undefined",
+          "operation": "Percentage_Ongoing",
+          "sourceRequirements": [
+            "Meta.Damage.Bullet"
+          ],
+          "targetRequirements": "$undefined"
+        },
+        {
+          "alignment": "$undefined",
+          "amount": -85,
+          "category": "Meta.Damage.Category.Armor",
+          "customOperation": "$undefined",
+          "hitLocations": "$undefined",
+          "operation": "Percentage_Ongoing",
+          "sourceRequirements": [
+            "Meta.Damage.Explosive"
+          ],
+          "targetRequirements": "$undefined"
+        },
+        {
+          "alignment": "$undefined",
+          "amount": 0,
+          "category": "Meta.Damage.Category.Penetration",
+          "customOperation": "$undefined",
+          "hitLocations": "$undefined",
+          "operation": "Percentage_Ongoing",
+          "sourceRequirements": [
+            "Meta.Damage.Bullet",
+            "Meta.Damage.Armor.Penetrate"
+          ],
+          "targetRequirements": "$undefined"
+        },
+        {
+          "alignment": "$undefined",
+          "amount": -1000,
+          "category": "Meta.Damage.Category.Armor",
+          "customOperation": "$undefined",
+          "hitLocations": "$undefined",
+          "operation": "Percentage_Ongoing",
+          "sourceRequirements": "$undefined",
+          "targetRequirements": [
+            "Meta.Damage.Helmet.Ghillie"
+          ]
+        },
+        {
+          "alignment": "$undefined",
+          "amount": -80,
+          "category": "Meta.Damage.Category.AmmoModifier",
+          "customOperation": "$undefined",
+          "hitLocations": "$undefined",
+          "operation": "Percentage_Ongoing",
+          "sourceRequirements": [
+            "Meta.Damage.Bullet.12g.7mmBuckshot"
+          ],
+          "targetRequirements": "$undefined"
+        }
+      ],
+      "Meta.Damage.Helmet.Ghillie": [
+        {
+          "alignment": "$undefined",
+          "amount": -100,
+          "category": "Meta.Damage.Category.Armor",
+          "customOperation": "$undefined",
+          "hitLocations": "$undefined",
+          "operation": "Percentage_Ongoing",
+          "sourceRequirements": [
+            "Meta.Damage.Bullet"
+          ],
+          "targetRequirements": "$undefined"
+        },
+        {
+          "alignment": "$undefined",
+          "amount": -100,
+          "category": "Meta.Damage.Category.Armor",
+          "customOperation": "$undefined",
+          "hitLocations": "$undefined",
+          "operation": "Percentage_Ongoing",
+          "sourceRequirements": [
+            "Meta.Damage.Explosive"
+          ],
+          "targetRequirements": "$undefined"
+        },
+        {
+          "alignment": "$undefined",
+          "amount": -100,
+          "category": "Meta.Damage.Category.Armor",
+          "customOperation": "$undefined",
+          "hitLocations": "$undefined",
+          "operation": "Percentage_Ongoing",
+          "sourceRequirements": [
+            "Meta.Damage.Cannon"
+          ],
+          "targetRequirements": "$undefined"
+        },
+        {
+          "alignment": "$undefined",
+          "amount": -100,
+          "category": "Meta.Damage.Category.Armor",
+          "customOperation": "$undefined",
+          "hitLocations": "$undefined",
+          "operation": "Percentage_Ongoing",
+          "sourceRequirements": [
+            "Meta.Damage.DamageType.Impact"
+          ],
+          "targetRequirements": "$undefined"
+        },
+        {
+          "alignment": "$undefined",
+          "amount": -100,
+          "category": "Meta.Damage.Category.Armor",
+          "customOperation": "$undefined",
+          "hitLocations": "$undefined",
+          "operation": "Percentage_Ongoing",
+          "sourceRequirements": [
+            "Meta.Damage.DamageType.Melee"
+          ],
+          "targetRequirements": "$undefined"
+        },
+        {
+          "alignment": "$undefined",
+          "amount": -100,
+          "category": "Meta.Damage.Category.Armor",
+          "customOperation": "$undefined",
+          "hitLocations": "$undefined",
+          "operation": "Percentage_Ongoing",
+          "sourceRequirements": "$undefined",
+          "targetRequirements": "$undefined"
+        }
+      ]
+    },
+    "categoryOrder": [
+      "Meta.Damage.Category.Calibre",
+      "Meta.Damage.Category.AmmoModifier",
+      "Meta.Damage.Category.CaliberEffectiveness",
+      "Meta.Damage.Category.Bone",
+      "Meta.Damage.Category.PenetrationEffectiveness",
+      "Meta.Damage.Category.Tracer",
+      "Meta.Damage.Category.Weapon",
+      "Meta.Damage.Category.Armor",
+      "Meta.Damage.Category.Melee",
+      "Meta.Damage.Category.Ricochet",
+      "Meta.Damage.Category.Penetration",
+      "Meta.Damage.Category.Friendly"
+    ],
+    "hitLocationMultipliers": {
+      "Meta.Damage.DamageType.Melee": {
+        "Arm.Hand": 1.2,
+        "Arm.Lower": 1.2,
+        "Arm.Upper": 1.2,
+        "Head": 1.5,
+        "Leg.Calf": 1.2,
+        "Leg.Foot": 1.2,
+        "Leg.Thigh": 1.2,
+        "Neck": 1.5,
+        "Pelvis": 1,
+        "Torso.Lower": 1,
+        "Torso.Middle": 1,
+        "Torso.Upper": 1
+      },
+      "Meta.Damage.Weapon.AR": {
+        "Arm.Hand": 0.9,
+        "Arm.Lower": 0.9,
+        "Arm.Upper": 0.9,
+        "Head": 2.35,
+        "Leg.Calf": 0.9,
+        "Leg.Foot": 0.9,
+        "Leg.Thigh": 0.9,
+        "Neck": 2.35,
+        "Pelvis": 1,
+        "Torso.Lower": 1,
+        "Torso.Middle": 1,
+        "Torso.Upper": 1
+      },
+      "Meta.Damage.Weapon.CombatBow": {
+        "Arm.Hand": 0.8,
+        "Arm.Lower": 0.8,
+        "Arm.Upper": 0.8,
+        "Head": 2.3,
+        "Leg.Calf": 0.8,
+        "Leg.Foot": 0.8,
+        "Leg.Thigh": 0.8,
+        "Neck": 2.3,
+        "Pelvis": 1,
+        "Torso.Lower": 1.5,
+        "Torso.Middle": 1.9,
+        "Torso.Upper": 1.9
+      },
+      "Meta.Damage.Weapon.DMR": {
+        "Arm.Hand": 1,
+        "Arm.Lower": 1,
+        "Arm.Upper": 1,
+        "Head": 2.5,
+        "Leg.Calf": 1,
+        "Leg.Foot": 1,
+        "Leg.Thigh": 1,
+        "Neck": 2.5,
+        "Pelvis": 1,
+        "Torso.Lower": 1.3,
+        "Torso.Middle": 1.3,
+        "Torso.Upper": 1.3
+      },
+      "Meta.Damage.Weapon.LMG": {
+        "Arm.Hand": 0.9,
+        "Arm.Lower": 0.9,
+        "Arm.Upper": 0.9,
+        "Head": 2.3,
+        "Leg.Calf": 0.9,
+        "Leg.Foot": 0.9,
+        "Leg.Thigh": 0.9,
+        "Neck": 2.3,
+        "Pelvis": 1,
+        "Torso.Lower": 1.05,
+        "Torso.Middle": 1.05,
+        "Torso.Upper": 1.05
+      },
+      "Meta.Damage.Weapon.Launcher": {
+        "Arm.Hand": 0.8,
+        "Arm.Lower": 0.8,
+        "Arm.Upper": 0.8,
+        "Head": 1.5,
+        "Leg.Calf": 0.8,
+        "Leg.Foot": 0.8,
+        "Leg.Thigh": 0.8,
+        "Neck": 1.5,
+        "Pelvis": 0.6,
+        "Torso.Lower": 0.6,
+        "Torso.Middle": 0.6,
+        "Torso.Upper": 1
+      },
+      "Meta.Damage.Weapon.Pistol": {
+        "Arm.Hand": 1.3,
+        "Arm.Lower": 1.3,
+        "Arm.Upper": 1.3,
+        "Head": 2.1,
+        "Leg.Calf": 1.3,
+        "Leg.Foot": 1.3,
+        "Leg.Thigh": 1.3,
+        "Neck": 2.1,
+        "Pelvis": 1.05,
+        "Torso.Lower": 1.05,
+        "Torso.Middle": 1.05,
+        "Torso.Upper": 1.05
+      },
+      "Meta.Damage.Weapon.SMG": {
+        "Arm.Hand": 1.3,
+        "Arm.Lower": 1.3,
+        "Arm.Upper": 1.3,
+        "Head": 2.1,
+        "Leg.Calf": 1.3,
+        "Leg.Foot": 1.3,
+        "Leg.Thigh": 1.3,
+        "Neck": 2.1,
+        "Pelvis": 1.05,
+        "Torso.Lower": 1.05,
+        "Torso.Middle": 1.05,
+        "Torso.Upper": 1.05
+      },
+      "Meta.Damage.Weapon.Shotgun": {
+        "Arm.Hand": 1.05,
+        "Arm.Lower": 1.05,
+        "Arm.Upper": 1.05,
+        "Head": 1.5,
+        "Leg.Calf": 1.05,
+        "Leg.Foot": 1.05,
+        "Leg.Thigh": 1.05,
+        "Neck": 1.5,
+        "Pelvis": 0.9,
+        "Torso.Lower": 0.9,
+        "Torso.Middle": 0.9,
+        "Torso.Upper": 0.9
+      },
+      "Meta.Damage.Weapon.Sniper": {
+        "Arm.Hand": 1.2,
+        "Arm.Lower": 1.2,
+        "Arm.Upper": 1.2,
+        "Head": 3.2,
+        "Leg.Calf": 1.2,
+        "Leg.Foot": 1.2,
+        "Leg.Thigh": 1.2,
+        "Neck": 3.2,
+        "Pelvis": 1.3,
+        "Torso.Lower": 1.45,
+        "Torso.Middle": 1.45,
+        "Torso.Upper": 1.8
+      },
+      "Meta.Damage.Weapon.Vehicle.Cannon": {
+        "Arm.Hand": 0.3,
+        "Arm.Lower": 0.3,
+        "Arm.Upper": 0.3,
+        "Head": 1,
+        "Leg.Calf": 0.3,
+        "Leg.Foot": 0.3,
+        "Leg.Thigh": 0.3,
+        "Neck": 1,
+        "Pelvis": 0.6,
+        "Torso.Lower": 0.6,
+        "Torso.Middle": 0.6,
+        "Torso.Upper": 0.6
+      },
+      "Meta.Damage.Weapon.Vehicle.HelicopterCannon": {
+        "Arm.Hand": 1.2,
+        "Arm.Lower": 1.2,
+        "Arm.Upper": 1.2,
+        "Head": 3.2,
+        "Leg.Calf": 1.2,
+        "Leg.Foot": 1.2,
+        "Leg.Thigh": 1.2,
+        "Neck": 3.2,
+        "Pelvis": 1.3,
+        "Torso.Lower": 1.8,
+        "Torso.Middle": 1.8,
+        "Torso.Upper": 1.8
+      },
+      "Meta.Damage.Weapon.Vehicle.HelicopterRocket": {
+        "Arm.Hand": 0.8,
+        "Arm.Lower": 0.8,
+        "Arm.Upper": 0.8,
+        "Head": 1.5,
+        "Leg.Calf": 0.8,
+        "Leg.Foot": 0.8,
+        "Leg.Thigh": 0.8,
+        "Neck": 1.5,
+        "Pelvis": 0.6,
+        "Torso.Lower": 0.6,
+        "Torso.Middle": 0.6,
+        "Torso.Upper": 1
+      },
+      "Meta.Damage.Weapon.Vehicle.Turret.Artillery": {
+        "Arm.Hand": 1.2,
+        "Arm.Lower": 1.2,
+        "Arm.Upper": 1.2,
+        "Head": 3.2,
+        "Leg.Calf": 1.2,
+        "Leg.Foot": 1.2,
+        "Leg.Thigh": 1.2,
+        "Neck": 3.2,
+        "Pelvis": 1.3,
+        "Torso.Lower": 1.8,
+        "Torso.Middle": 1.8,
+        "Torso.Upper": 1.8
+      },
+      "Meta.Damage.Weapon.Vehicle.Turret.Heavy": {
+        "Arm.Hand": 1.2,
+        "Arm.Lower": 1.2,
+        "Arm.Upper": 1.2,
+        "Head": 3.2,
+        "Leg.Calf": 1.2,
+        "Leg.Foot": 1.2,
+        "Leg.Thigh": 1.2,
+        "Neck": 3.2,
+        "Pelvis": 1.3,
+        "Torso.Lower": 1.8,
+        "Torso.Middle": 1.8,
+        "Torso.Upper": 1.8
+      },
+      "Meta.Damage.Weapon.Vehicle.Turret.MachineGun": {
+        "Arm.Hand": 0.9,
+        "Arm.Lower": 0.9,
+        "Arm.Upper": 0.9,
+        "Head": 2.35,
+        "Leg.Calf": 0.9,
+        "Leg.Foot": 0.9,
+        "Leg.Thigh": 0.9,
+        "Neck": 2.35,
+        "Pelvis": 1,
+        "Torso.Lower": 1,
+        "Torso.Middle": 1,
+        "Torso.Upper": 1
+      },
+      "Meta.Damage.Weapon.Vehicle.Turret.Minigun": {
+        "Arm.Hand": 1,
+        "Arm.Lower": 1,
+        "Arm.Upper": 1,
+        "Head": 2.5,
+        "Leg.Calf": 1,
+        "Leg.Foot": 1,
+        "Leg.Thigh": 1,
+        "Neck": 2.5,
+        "Pelvis": 1,
+        "Torso.Lower": 1.3,
+        "Torso.Middle": 1.3,
+        "Torso.Upper": 1.3
+      },
+      "Universal": {
+        "Arm.Hand": 0.3,
+        "Arm.Lower": 0.5,
+        "Arm.Upper": 0.6,
+        "Head": 1,
+        "Leg.Calf": 0.5,
+        "Leg.Foot": 0.3,
+        "Leg.Thigh": 0.6,
+        "Neck": 0.75,
+        "Pelvis": 0.9,
+        "Torso.Lower": 0.95,
+        "Torso.Middle": 1,
+        "Torso.Upper": 1.1
+      }
+    },
+    "infantryRules": [
+      {
+        "alignment": "$undefined",
+        "amount": -75,
+        "category": "Meta.Damage.Category.Bone",
+        "customOperation": "B_BoneDamageModifiers_C",
+        "hitLocations": [
+          "Infantry"
+        ],
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Bullet"
+        ],
+        "targetRequirements": "$undefined"
+      },
+      {
+        "alignment": "$undefined",
+        "amount": -75,
+        "category": "Meta.Damage.Category.Bone",
+        "customOperation": "B_BoneDamageModifiers_C",
+        "hitLocations": [
+          "Infantry"
+        ],
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Kinetic.Impact.ExplosiveBlunt"
+        ],
+        "targetRequirements": "$undefined"
+      },
+      {
+        "alignment": "Friendly",
+        "amount": -50,
+        "category": "Meta.Damage.Category.Friendly",
+        "customOperation": "$undefined",
+        "hitLocations": [
+          "Infantry"
+        ],
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Bullet"
+        ],
+        "targetRequirements": "$undefined"
+      },
+      {
+        "alignment": "Friendly",
+        "amount": -70,
+        "category": "Meta.Damage.Category.Friendly",
+        "customOperation": "$undefined",
+        "hitLocations": "$undefined",
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Utility.LargeHammer"
+        ],
+        "targetRequirements": "$undefined"
+      },
+      {
+        "alignment": "$undefined",
+        "amount": -75,
+        "category": "Meta.Damage.Category.Bone",
+        "customOperation": "B_BoneDamageModifiers_C",
+        "hitLocations": [
+          "Infantry"
+        ],
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Cannon"
+        ],
+        "targetRequirements": "$undefined"
+      },
+      {
+        "alignment": "$undefined",
+        "amount": -20,
+        "category": "Meta.Damage.Category.AmmoModifier",
+        "customOperation": "$undefined",
+        "hitLocations": "$undefined",
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Bullet",
+          "Meta.Damage.AmmoModifier.ArmorPiercing"
+        ],
+        "targetRequirements": "$undefined"
+      },
+      {
+        "alignment": "$undefined",
+        "amount": 0,
+        "category": "Meta.Damage.Category.Tracer",
+        "customOperation": "$undefined",
+        "hitLocations": "$undefined",
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Bullet",
+          "Meta.Damage.AmmoModifier.ArmorPiercing.Tracer"
+        ],
+        "targetRequirements": "$undefined"
+      },
+      {
+        "alignment": "$undefined",
+        "amount": 100,
+        "category": "Meta.Damage.Category.AmmoModifier",
+        "customOperation": "$undefined",
+        "hitLocations": "$undefined",
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Bullet",
+          "Meta.Damage.AmmoModifier.HollowPoint"
+        ],
+        "targetRequirements": "$undefined"
+      },
+      {
+        "alignment": "$undefined",
+        "amount": 0,
+        "category": "Meta.Damage.Category.Tracer",
+        "customOperation": "$undefined",
+        "hitLocations": "$undefined",
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Bullet",
+          "Meta.Damage.AmmoModifier.HollowPoint.Tracer"
+        ],
+        "targetRequirements": "$undefined"
+      },
+      {
+        "alignment": "$undefined",
+        "amount": -70,
+        "category": "Meta.Damage.Category.Tracer",
+        "customOperation": "$undefined",
+        "hitLocations": "$undefined",
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Bullet",
+          "Meta.Damage.AmmoModifier.HollowPoint"
+        ],
+        "targetRequirements": [
+          "Meta.Damage.Helmet"
+        ]
+      },
+      {
+        "alignment": "$undefined",
+        "amount": -55,
+        "category": "Meta.Damage.Category.Tracer",
+        "customOperation": "$undefined",
+        "hitLocations": "$undefined",
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Bullet",
+          "Meta.Damage.AmmoModifier.HollowPoint"
+        ],
+        "targetRequirements": [
+          "Meta.Damage.Armor"
+        ]
+      },
+      {
+        "alignment": "$undefined",
+        "amount": 0,
+        "category": "Meta.Damage.Category.Tracer",
+        "customOperation": "$undefined",
+        "hitLocations": "$undefined",
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.AmmoModifier.Tracer",
+          "Meta.Damage.Bullet"
+        ],
+        "targetRequirements": "$undefined"
+      },
+      {
+        "alignment": "$undefined",
+        "amount": 0,
+        "category": "Meta.Damage.Category.AmmoModifier",
+        "customOperation": "$undefined",
+        "hitLocations": "$undefined",
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Bullet.Arrow"
+        ],
+        "targetRequirements": "$undefined"
+      },
+      {
+        "alignment": "$undefined",
+        "amount": 0,
+        "category": "Meta.Damage.Category.AmmoModifier",
+        "customOperation": "$undefined",
+        "hitLocations": "$undefined",
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Bullet.Arrow"
+        ],
+        "targetRequirements": [
+          "Meta.Damage.Armor"
+        ]
+      },
+      {
+        "alignment": "$undefined",
+        "amount": 0,
+        "category": "Meta.Damage.Category.AmmoModifier",
+        "customOperation": "$undefined",
+        "hitLocations": "$undefined",
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Bullet.Arrow"
+        ],
+        "targetRequirements": [
+          "Meta.Damage.Helmet"
+        ]
+      },
+      {
+        "alignment": "$undefined",
+        "amount": 0,
+        "category": "Meta.Damage.Category.Weapon",
+        "customOperation": "$undefined",
+        "hitLocations": [
+          "Infantry"
+        ],
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Bullet.556mm",
+          "Meta.Damage.Weapon.AR.KH2002"
+        ],
+        "targetRequirements": "$undefined"
+      },
+      {
+        "alignment": "$undefined",
+        "amount": 0,
+        "category": "Meta.Damage.Category.Weapon",
+        "customOperation": "$undefined",
+        "hitLocations": [
+          "Infantry"
+        ],
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Bullet.556mm",
+          "Meta.Damage.Weapon.AR.TAR21"
+        ],
+        "targetRequirements": "$undefined"
+      },
+      {
+        "alignment": "$undefined",
+        "amount": 0,
+        "category": "Meta.Damage.Category.Weapon",
+        "customOperation": "$undefined",
+        "hitLocations": [
+          "Infantry"
+        ],
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Bullet.556mm",
+          "Meta.Damage.Weapon.AR.A91"
+        ],
+        "targetRequirements": "$undefined"
+      },
+      {
+        "alignment": "$undefined",
+        "amount": 0,
+        "category": "Meta.Damage.Category.Weapon",
+        "customOperation": "$undefined",
+        "hitLocations": [
+          "Infantry"
+        ],
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Bullet.556mm",
+          "Meta.Damage.Weapon.AR.M4"
+        ],
+        "targetRequirements": "$undefined"
+      },
+      {
+        "alignment": "$undefined",
+        "amount": 0,
+        "category": "Meta.Damage.Category.Weapon",
+        "customOperation": "$undefined",
+        "hitLocations": [
+          "Arm",
+          "Leg",
+          "Neck",
+          "Pelvis",
+          "Torso"
+        ],
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Bullet.556mm",
+          "Meta.Damage.Weapon.LMG.M249"
+        ],
+        "targetRequirements": "$undefined"
+      },
+      {
+        "alignment": "$undefined",
+        "amount": 0,
+        "category": "Meta.Damage.Category.Weapon",
+        "customOperation": "$undefined",
+        "hitLocations": [
+          "Infantry"
+        ],
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Bullet.545mm",
+          "Meta.Damage.Weapon.AR.AK47M"
+        ],
+        "targetRequirements": "$undefined"
+      },
+      {
+        "alignment": "$undefined",
+        "amount": 0,
+        "category": "Meta.Damage.Category.Weapon",
+        "customOperation": "$undefined",
+        "hitLocations": [
+          "Infantry"
+        ],
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Bullet.9mm",
+          "Meta.Damage.Weapon.Pistol.G60"
+        ],
+        "targetRequirements": "$undefined"
+      },
+      {
+        "alignment": "$undefined",
+        "amount": 0,
+        "category": "Meta.Damage.Category.Weapon",
+        "customOperation": "$undefined",
+        "hitLocations": "$undefined",
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Bullet.9mm",
+          "Meta.Damage.Weapon.SMG.MP7"
+        ],
+        "targetRequirements": "$undefined"
+      },
+      {
+        "alignment": "$undefined",
+        "amount": 0,
+        "category": "Meta.Damage.Category.Weapon",
+        "customOperation": "$undefined",
+        "hitLocations": "$undefined",
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Bullet.9mm",
+          "Meta.Damage.Weapon.SMG.SMG3"
+        ],
+        "targetRequirements": "$undefined"
+      },
+      {
+        "alignment": "$undefined",
+        "amount": 0,
+        "category": "Meta.Damage.Category.Weapon",
+        "customOperation": "$undefined",
+        "hitLocations": [
+          "Infantry"
+        ],
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Bullet.45Colt",
+          "Meta.Damage.Weapon.Pistol.Judge"
+        ],
+        "targetRequirements": "$undefined"
+      },
+      {
+        "alignment": "$undefined",
+        "amount": 0,
+        "category": "Meta.Damage.Category.Weapon",
+        "customOperation": "$undefined",
+        "hitLocations": [
+          "Infantry"
+        ],
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Bullet.762mm",
+          "Meta.Damage.Weapon.DMR.SKS"
+        ],
+        "targetRequirements": "$undefined"
+      },
+      {
+        "alignment": "$undefined",
+        "amount": 0,
+        "category": "Meta.Damage.Category.Weapon",
+        "customOperation": "$undefined",
+        "hitLocations": [
+          "Infantry"
+        ],
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Weapon.Sniper.SV98",
+          "Meta.Damage.Bullet.762x54mm"
+        ],
+        "targetRequirements": "$undefined"
+      },
+      {
+        "alignment": "$undefined",
+        "amount": 0,
+        "category": "Meta.Damage.Category.Weapon",
+        "customOperation": "$undefined",
+        "hitLocations": [
+          "Infantry"
+        ],
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Weapon.Sniper.Mosin",
+          "Meta.Damage.Bullet.762x54mm"
+        ],
+        "targetRequirements": "$undefined"
+      },
+      {
+        "alignment": "$undefined",
+        "amount": 0,
+        "category": "Meta.Damage.Category.Weapon",
+        "customOperation": "$undefined",
+        "hitLocations": [
+          "Infantry"
+        ],
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Bullet.762x54mm",
+          "Meta.Damage.Weapon.LMG.LMG_02"
+        ],
+        "targetRequirements": "$undefined"
+      },
+      {
+        "alignment": "$undefined",
+        "amount": 0,
+        "category": "Meta.Damage.Category.Weapon",
+        "customOperation": "$undefined",
+        "hitLocations": [
+          "Infantry"
+        ],
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Bullet.762x54mm",
+          "Meta.Damage.Weapon.DMR.SVDM"
+        ],
+        "targetRequirements": "$undefined"
+      },
+      {
+        "alignment": "$undefined",
+        "amount": 0,
+        "category": "Meta.Damage.Category.Weapon",
+        "customOperation": "$undefined",
+        "hitLocations": [
+          "Infantry"
+        ],
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Weapon.DMR.RFB",
+          "Meta.Damage.Bullet.308Win"
+        ],
+        "targetRequirements": "$undefined"
+      },
+      {
+        "alignment": "$undefined",
+        "amount": 0,
+        "category": "Meta.Damage.Category.Weapon",
+        "customOperation": "$undefined",
+        "hitLocations": [
+          "Infantry"
+        ],
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Bullet.308Win",
+          "Meta.Damage.Weapon.Sniper.MRAD"
+        ],
+        "targetRequirements": "$undefined"
+      },
+      {
+        "alignment": "$undefined",
+        "amount": 0,
+        "category": "Meta.Damage.Category.Weapon",
+        "customOperation": "$undefined",
+        "hitLocations": [
+          "Infantry"
+        ],
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Bullet.308Win",
+          "Meta.Damage.Weapon.AR.Fal"
+        ],
+        "targetRequirements": "$undefined"
+      },
+      {
+        "alignment": "$undefined",
+        "amount": 0,
+        "category": "Meta.Damage.Category.Calibre",
+        "customOperation": "$undefined",
+        "hitLocations": [
+          "Infantry"
+        ],
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Bullet.12g.7mmBuckshot"
+        ],
+        "targetRequirements": "$undefined"
+      },
+      {
+        "alignment": "$undefined",
+        "amount": -30,
+        "category": "Meta.Damage.Category.AmmoModifier",
+        "customOperation": "$undefined",
+        "hitLocations": [
+          "Infantry"
+        ],
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Bullet.12g.7mmBuckshot"
+        ],
+        "targetRequirements": [
+          "Meta.Damage.Helmet"
+        ]
+      },
+      {
+        "alignment": "$undefined",
+        "amount": -40,
+        "category": "Meta.Damage.Category.AmmoModifier",
+        "customOperation": "$undefined",
+        "hitLocations": [
+          "Infantry"
+        ],
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Bullet.12g.7mmBuckshot"
+        ],
+        "targetRequirements": [
+          "Meta.Damage.Armor"
+        ]
+      },
+      {
+        "alignment": "$undefined",
+        "amount": -40,
+        "category": "Meta.Damage.Category.AmmoModifier",
+        "customOperation": "$undefined",
+        "hitLocations": [
+          "Infantry"
+        ],
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Bullet.12g.7mmBuckshot"
+        ],
+        "targetRequirements": [
+          "Meta.Damage.Armor.SuperHeavy"
+        ]
+      },
+      {
+        "alignment": "$undefined",
+        "amount": 0,
+        "category": "Meta.Damage.Category.Calibre",
+        "customOperation": "$undefined",
+        "hitLocations": [
+          "Infantry"
+        ],
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Bullet.12g.RifledSlug"
+        ],
+        "targetRequirements": "$undefined"
+      },
+      {
+        "alignment": "$undefined",
+        "amount": -5,
+        "category": "Meta.Damage.Category.AmmoModifier",
+        "customOperation": "$undefined",
+        "hitLocations": [
+          "Infantry"
+        ],
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Bullet.12g.RifledSlug"
+        ],
+        "targetRequirements": [
+          "Meta.Damage.Helmet"
+        ]
+      },
+      {
+        "alignment": "$undefined",
+        "amount": -12,
+        "category": "Meta.Damage.Category.AmmoModifier",
+        "customOperation": "$undefined",
+        "hitLocations": [
+          "Infantry"
+        ],
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Bullet.12g.RifledSlug"
+        ],
+        "targetRequirements": [
+          "Meta.Damage.Helmet.SuperHeavy"
+        ]
+      },
+      {
+        "alignment": "$undefined",
+        "amount": -13,
+        "category": "Meta.Damage.Category.AmmoModifier",
+        "customOperation": "$undefined",
+        "hitLocations": [
+          "Infantry"
+        ],
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Bullet.12g.RifledSlug"
+        ],
+        "targetRequirements": [
+          "Meta.Damage.Armor"
+        ]
+      },
+      {
+        "alignment": "$undefined",
+        "amount": 0,
+        "category": "Meta.Damage.Category.Weapon",
+        "customOperation": "$undefined",
+        "hitLocations": [
+          "Infantry"
+        ],
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Weapon.Shotgun.M12G"
+        ],
+        "targetRequirements": "$undefined"
+      },
+      {
+        "alignment": "$undefined",
+        "amount": 0,
+        "category": "Meta.Damage.Category.Weapon",
+        "customOperation": "$undefined",
+        "hitLocations": [
+          "Infantry"
+        ],
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Weapon.SMG.Vector",
+          "Meta.Damage.Bullet.45ACP"
+        ],
+        "targetRequirements": "$undefined"
+      },
+      {
+        "alignment": "$undefined",
+        "amount": 30,
+        "category": "Meta.Damage.Category.Weapon",
+        "customOperation": "$undefined",
+        "hitLocations": [
+          "Infantry"
+        ],
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Bullet.45ACP",
+          "Meta.Damage.Weapon.Pistol.M1911"
+        ],
+        "targetRequirements": "$undefined"
+      },
+      {
+        "alignment": "$undefined",
+        "amount": -15,
+        "category": "Meta.Damage.Category.Calibre",
+        "customOperation": "$undefined",
+        "hitLocations": "$undefined",
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Explosive.Rocket"
+        ],
+        "targetRequirements": [
+          "Meta.Damage.Armor.Light"
+        ]
+      },
+      {
+        "alignment": "$undefined",
+        "amount": -25,
+        "category": "Meta.Damage.Category.Calibre",
+        "customOperation": "$undefined",
+        "hitLocations": "$undefined",
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Explosive.Rocket"
+        ],
+        "targetRequirements": [
+          "Meta.Damage.Armor.Medium"
+        ]
+      },
+      {
+        "alignment": "$undefined",
+        "amount": -35,
+        "category": "Meta.Damage.Category.Calibre",
+        "customOperation": "$undefined",
+        "hitLocations": "$undefined",
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Explosive.Rocket"
+        ],
+        "targetRequirements": [
+          "Meta.Damage.Armor.Heavy"
+        ]
+      },
+      {
+        "alignment": "$undefined",
+        "amount": -50,
+        "category": "Meta.Damage.Category.Calibre",
+        "customOperation": "$undefined",
+        "hitLocations": "$undefined",
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Explosive"
+        ],
+        "targetRequirements": [
+          "Meta.Damage.Armor.SuperHeavy"
+        ]
+      },
+      {
+        "alignment": "$undefined",
+        "amount": -55,
+        "category": "Meta.Damage.Category.Calibre",
+        "customOperation": "$undefined",
+        "hitLocations": "$undefined",
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Explosive.Rocket.155mm",
+          "Meta.Damage.Explosive.Radius.Outer"
+        ],
+        "targetRequirements": "$undefined"
+      },
+      {
+        "alignment": "$undefined",
+        "amount": -50,
+        "category": "Meta.Damage.Category.Calibre",
+        "customOperation": "$undefined",
+        "hitLocations": "$undefined",
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Explosive.Radius.Outer",
+          "Meta.Damage.Explosive.Rocket.120mm"
+        ],
+        "targetRequirements": "$undefined"
+      },
+      {
+        "alignment": "$undefined",
+        "amount": -45,
+        "category": "Meta.Damage.Category.Calibre",
+        "customOperation": "$undefined",
+        "hitLocations": "$undefined",
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Explosive.Rocket.122mm"
+        ],
+        "targetRequirements": "$undefined"
+      },
+      {
+        "alignment": "$undefined",
+        "amount": -50,
+        "category": "Meta.Damage.Category.Calibre",
+        "customOperation": "$undefined",
+        "hitLocations": "$undefined",
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Explosive.Radius.Outer",
+          "Meta.Damage.Explosive.Rocket.84mm"
+        ],
+        "targetRequirements": "$undefined"
+      },
+      {
+        "alignment": "$undefined",
+        "amount": 1,
+        "category": "Meta.Damage.Category.Calibre",
+        "customOperation": "$undefined",
+        "hitLocations": "$undefined",
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Explosive.Rocket.84mm",
+          "Meta.Damage.Explosive.Radius.Inner"
+        ],
+        "targetRequirements": "$undefined"
+      },
+      {
+        "alignment": "$undefined",
+        "amount": -50,
+        "category": "Meta.Damage.Category.Calibre",
+        "customOperation": "$undefined",
+        "hitLocations": "$undefined",
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Explosive.Radius.Outer",
+          "Meta.Damage.Explosive.Rocket.93mm"
+        ],
+        "targetRequirements": "$undefined"
+      },
+      {
+        "alignment": "$undefined",
+        "amount": -40,
+        "category": "Meta.Damage.Category.Calibre",
+        "customOperation": "$undefined",
+        "hitLocations": "$undefined",
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Explosive.Radius.Outer",
+          "Meta.Damage.Explosive.Utility.C4"
+        ],
+        "targetRequirements": "$undefined"
+      },
+      {
+        "alignment": "$undefined",
+        "amount": 500,
+        "category": "Meta.Damage.Category.AmmoModifier",
+        "customOperation": "$undefined",
+        "hitLocations": "$undefined",
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Kinetic.Impact.ExplosiveBlunt",
+          "Meta.Damage.Explosive.Drone"
+        ],
+        "targetRequirements": "$undefined"
+      },
+      {
+        "alignment": "$undefined",
+        "amount": 0,
+        "category": "Meta.Damage.Category.PenetrationEffectiveness",
+        "customOperation": "$undefined",
+        "hitLocations": "$undefined",
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Bullet.50Cal"
+        ],
+        "targetRequirements": [
+          "Meta.Damage.Armor"
+        ]
+      },
+      {
+        "alignment": "$undefined",
+        "amount": 0,
+        "category": "Meta.Damage.Category.PenetrationEffectiveness",
+        "customOperation": "$undefined",
+        "hitLocations": "$undefined",
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Bullet.50Cal"
+        ],
+        "targetRequirements": [
+          "Meta.Damage.Helmet"
+        ]
+      },
+      {
+        "alignment": "$undefined",
+        "amount": -25,
+        "category": "Meta.Damage.Category.PenetrationEffectiveness",
+        "customOperation": "$undefined",
+        "hitLocations": "$undefined",
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Arms.High"
+        ],
+        "targetRequirements": [
+          "Meta.Damage.Helmet.SuperHeavy"
+        ]
+      },
+      {
+        "alignment": "$undefined",
+        "amount": -40,
+        "category": "Meta.Damage.Category.PenetrationEffectiveness",
+        "customOperation": "$undefined",
+        "hitLocations": "$undefined",
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Bullet",
+          "Meta.Damage.AmmoModifier.HollowPoint"
+        ],
+        "targetRequirements": [
+          "Meta.Damage.Armor"
+        ]
+      },
+      {
+        "alignment": "$undefined",
+        "amount": -40,
+        "category": "Meta.Damage.Category.PenetrationEffectiveness",
+        "customOperation": "$undefined",
+        "hitLocations": "$undefined",
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Bullet",
+          "Meta.Damage.AmmoModifier.HollowPoint"
+        ],
+        "targetRequirements": [
+          "Meta.Damage.Helmet"
+        ]
+      },
+      {
+        "alignment": "$undefined",
+        "amount": 0,
+        "category": "Meta.Damage.Category.PenetrationEffectiveness",
+        "customOperation": "B_AmmoTypeEffectiveness_C",
+        "hitLocations": [
+          "Infantry"
+        ],
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Bullet"
+        ],
+        "targetRequirements": [
+          "Meta.Damage.Armor"
+        ]
+      },
+      {
+        "alignment": "$undefined",
+        "amount": 0,
+        "category": "Meta.Damage.Category.PenetrationEffectiveness",
+        "customOperation": "B_AmmoTypeEffectiveness_C",
+        "hitLocations": [
+          "Infantry"
+        ],
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Cannon"
+        ],
+        "targetRequirements": [
+          "Meta.Damage.Armor"
+        ]
+      },
+      {
+        "alignment": "$undefined",
+        "amount": 0,
+        "category": "Meta.Damage.Category.PenetrationEffectiveness",
+        "customOperation": "B_AmmoTypeEffectiveness_C",
+        "hitLocations": [
+          "Infantry"
+        ],
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Bullet"
+        ],
+        "targetRequirements": [
+          "Meta.Damage.Helmet"
+        ]
+      },
+      {
+        "alignment": "$undefined",
+        "amount": 0,
+        "category": "Meta.Damage.Category.PenetrationEffectiveness",
+        "customOperation": "B_AmmoTypeEffectiveness_C",
+        "hitLocations": [
+          "Infantry"
+        ],
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Cannon"
+        ],
+        "targetRequirements": [
+          "Meta.Damage.Helmet"
+        ]
+      },
+      {
+        "alignment": "$undefined",
+        "amount": 0,
+        "category": "Meta.Damage.Category.PenetrationEffectiveness",
+        "customOperation": "WDDamageModificationOperation_PlayerArmorDurability",
+        "hitLocations": [
+          "Infantry"
+        ],
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Kinetic.Impact.ExplosiveBlunt"
+        ],
+        "targetRequirements": [
+          "Meta.Damage.Helmet"
+        ]
+      },
+      {
+        "alignment": "$undefined",
+        "amount": 0,
+        "category": "Meta.Damage.Category.PenetrationEffectiveness",
+        "customOperation": "WDDamageModificationOperation_PlayerArmorDurability",
+        "hitLocations": [
+          "Infantry"
+        ],
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Kinetic.Impact.ExplosiveBlunt"
+        ],
+        "targetRequirements": [
+          "Meta.Damage.Armor"
+        ]
+      },
+      {
+        "alignment": "$undefined",
+        "amount": -50,
+        "category": "Meta.Damage.Category.Penetration",
+        "customOperation": "WDDamageModificationOperation_PlayerArmorDurability",
+        "hitLocations": "$undefined",
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.DamageType.Melee"
+        ],
+        "targetRequirements": [
+          "Meta.Damage.Armor"
+        ]
+      },
+      {
+        "alignment": "$undefined",
+        "amount": -50,
+        "category": "Meta.Damage.Category.Penetration",
+        "customOperation": "B_VehicleSeatDamageReduction_C",
+        "hitLocations": "$undefined",
+        "operation": "Percentage_Ongoing",
+        "sourceRequirements": [
+          "Meta.Damage.Bullet"
+        ],
+        "targetRequirements": "$undefined"
+      }
+    ]
+  },
+  "roundsByCaliber": {
+    "120x570mm": [
+      {
+        "ammoModifierTag": "Meta.Damage.AmmoModifier.FMJ",
+        "ammoType": "FMJ",
+        "armsClassTags": "$undefined",
+        "baseDamage": 150,
+        "caliberKey": "120x570mm",
+        "damageTag": "Meta.Damage.Explosive.Rocket.120mm",
+        "effectiveRangeM": "$undefined",
+        "id": "ID.Item.120x570mm",
+        "pellets": "$undefined",
+        "penetrationEffectiveness": 1
+      }
+    ],
+    "120x800mm": [
+      {
+        "ammoModifierTag": "Meta.Damage.AmmoModifier.FMJ",
+        "ammoType": "FMJ",
+        "armsClassTags": "$undefined",
+        "baseDamage": 120,
+        "caliberKey": "120x800mm",
+        "damageTag": "Meta.Damage.Explosive.Rocket.120x800mm",
+        "effectiveRangeM": "$undefined",
+        "id": "Id.Item.120x800mm",
+        "pellets": "$undefined",
+        "penetrationEffectiveness": 1
+      }
+    ],
+    "122mm": [
+      {
+        "ammoModifierTag": "Meta.Damage.AmmoModifier.FMJ",
+        "ammoType": "FMJ",
+        "armsClassTags": "$undefined",
+        "baseDamage": 100,
+        "caliberKey": "122mm",
+        "damageTag": "Meta.Damage.Explosive.Rocket.122mm",
+        "effectiveRangeM": "$undefined",
+        "id": "Id.Item.122mm",
+        "pellets": "$undefined",
+        "penetrationEffectiveness": 1
+      }
+    ],
+    "12g": [
+      {
+        "ammoModifierTag": "Meta.Damage.AmmoModifier.FMJ",
+        "ammoType": "Buckshot",
+        "armsClassTags": [
+          "Meta.Damage.Arms.Small"
+        ],
+        "baseDamage": 25,
+        "caliberKey": "12g",
+        "damageTag": "Meta.Damage.Bullet.12g.7mmBuckshot",
+        "effectiveRangeM": "$undefined",
+        "id": "Id.Item.12g.7mmBuck",
+        "pellets": 8,
+        "penetrationEffectiveness": 1
+      },
+      {
+        "ammoModifierTag": "Meta.Damage.AmmoModifier.FMJ",
+        "ammoType": "Slug",
+        "armsClassTags": [
+          "Meta.Damage.Arms.Small"
+        ],
+        "baseDamage": 105,
+        "caliberKey": "12g",
+        "damageTag": "Meta.Damage.Bullet.12g.RifledSlug",
+        "effectiveRangeM": "$undefined",
+        "id": "Id.Item.12g.RifledSlug",
+        "pellets": "$undefined",
+        "penetrationEffectiveness": 1
+      }
+    ],
+    "155mm": [
+      {
+        "ammoModifierTag": "Meta.Damage.AmmoModifier.FMJ",
+        "ammoType": "FMJ",
+        "armsClassTags": "$undefined",
+        "baseDamage": 450,
+        "caliberKey": "155mm",
+        "damageTag": "Meta.Damage.Explosive.Rocket.155mm",
+        "effectiveRangeM": "$undefined",
+        "id": "ID.Item.155mm",
+        "pellets": "$undefined",
+        "penetrationEffectiveness": 1
+      }
+    ],
+    "155mm.Expensive": [
+      {
+        "ammoModifierTag": "Meta.Damage.AmmoModifier.FMJ",
+        "ammoType": "FMJ",
+        "armsClassTags": "$undefined",
+        "baseDamage": 450,
+        "caliberKey": "155mm.Expensive",
+        "damageTag": "Meta.Damage.Explosive.Rocket.155mm",
+        "effectiveRangeM": "$undefined",
+        "id": "ID.Item.155mm.Expensive",
+        "pellets": "$undefined",
+        "penetrationEffectiveness": 1
+      }
+    ],
+    "155mm.Standard": [
+      {
+        "ammoModifierTag": "Meta.Damage.AmmoModifier.FMJ",
+        "ammoType": "FMJ",
+        "armsClassTags": "$undefined",
+        "baseDamage": 450,
+        "caliberKey": "155mm.Standard",
+        "damageTag": "Meta.Damage.Explosive.Rocket.155mm",
+        "effectiveRangeM": "$undefined",
+        "id": "ID.Item.155mm.Standard",
+        "pellets": "$undefined",
+        "penetrationEffectiveness": 1
+      }
+    ],
+    "20x102mm": [
+      {
+        "ammoModifierTag": "Meta.Damage.AmmoModifier.FMJ",
+        "ammoType": "FMJ",
+        "armsClassTags": "$undefined",
+        "baseDamage": 60,
+        "caliberKey": "20x102mm",
+        "damageTag": "Meta.Damage.Cannon.20x102mm",
+        "effectiveRangeM": "$undefined",
+        "id": "Id.Item.20x102mm",
+        "pellets": "$undefined",
+        "penetrationEffectiveness": 1
+      }
+    ],
+    "308Win": [
+      {
+        "ammoModifierTag": "Meta.Damage.AmmoModifier.Tracer",
+        "ammoType": "FMJ",
+        "armsClassTags": [
+          "Meta.Damage.Arms.High"
+        ],
+        "baseDamage": 60,
+        "caliberKey": "308Win",
+        "damageTag": "Meta.Damage.Bullet.308Win",
+        "effectiveRangeM": "$undefined",
+        "id": "Id.Item.308Win",
+        "pellets": "$undefined",
+        "penetrationEffectiveness": 1
+      },
+      {
+        "ammoModifierTag": "Meta.Damage.AmmoModifier.ArmorPiercing",
+        "ammoType": "ArmorPiercing",
+        "armsClassTags": [
+          "Meta.Damage.Arms.High"
+        ],
+        "baseDamage": 60,
+        "caliberKey": "308Win",
+        "damageTag": "Meta.Damage.Bullet.308Win",
+        "effectiveRangeM": "$undefined",
+        "id": "Id.Item.308Win.ArmorPiercing",
+        "pellets": "$undefined",
+        "penetrationEffectiveness": 0.3
+      },
+      {
+        "ammoModifierTag": "Meta.Damage.AmmoModifier.HollowPoint",
+        "ammoType": "HollowPoint",
+        "armsClassTags": [
+          "Meta.Damage.Arms.High"
+        ],
+        "baseDamage": 60,
+        "caliberKey": "308Win",
+        "damageTag": "Meta.Damage.Bullet.308Win",
+        "effectiveRangeM": "$undefined",
+        "id": "Id.Item.308Win.HollowPoint",
+        "pellets": "$undefined",
+        "penetrationEffectiveness": 1.5
+      }
+    ],
+    "30mm": [
+      {
+        "ammoModifierTag": "Meta.Damage.AmmoModifier.Tracer",
+        "ammoType": "FMJ",
+        "armsClassTags": [
+          "Meta.Damage.Arms.High"
+        ],
+        "baseDamage": 100,
+        "caliberKey": "30mm",
+        "damageTag": "Meta.Damage.Cannon.30mm",
+        "effectiveRangeM": "$undefined",
+        "id": "Id.Item.30mm",
+        "pellets": "$undefined",
+        "penetrationEffectiveness": 1
+      }
+    ],
+    "338Nor": [
+      {
+        "ammoModifierTag": "Meta.Damage.AmmoModifier.Tracer",
+        "ammoType": "FMJ",
+        "armsClassTags": [
+          "Meta.Damage.Arms.High"
+        ],
+        "baseDamage": 105,
+        "caliberKey": "338Nor",
+        "damageTag": "Meta.Damage.Bullet.338Nor",
+        "effectiveRangeM": "$undefined",
+        "id": "Id.Item.338Nor",
+        "pellets": "$undefined",
+        "penetrationEffectiveness": 1
+      },
+      {
+        "ammoModifierTag": "Meta.Damage.AmmoModifier.HollowPoint",
+        "ammoType": "HollowPoint",
+        "armsClassTags": [
+          "Meta.Damage.Arms.High"
+        ],
+        "baseDamage": 105,
+        "caliberKey": "338Nor",
+        "damageTag": "Meta.Damage.Bullet.338Nor",
+        "effectiveRangeM": "$undefined",
+        "id": "Id.Item.338Nor.HollowPoint",
+        "pellets": "$undefined",
+        "penetrationEffectiveness": 1.5
+      }
+    ],
+    "35x228mm": [
+      {
+        "ammoModifierTag": "Meta.Damage.AmmoModifier.Tracer",
+        "ammoType": "FMJ",
+        "armsClassTags": "$undefined",
+        "baseDamage": 60,
+        "caliberKey": "35x228mm",
+        "damageTag": "Meta.Damage.Cannon.35x228mm",
+        "effectiveRangeM": "$undefined",
+        "id": "ID.Item.35x228mm",
+        "pellets": "$undefined",
+        "penetrationEffectiveness": 1
+      }
+    ],
+    "40mm": [
+      {
+        "ammoModifierTag": "Meta.Damage.AmmoModifier.FMJ",
+        "ammoType": "FMJ",
+        "armsClassTags": "$undefined",
+        "baseDamage": 100,
+        "caliberKey": "40mm",
+        "damageTag": "Meta.Damage.Explosive.Grenade.40mm",
+        "effectiveRangeM": "$undefined",
+        "id": "Id.Item.40mm",
+        "pellets": "$undefined",
+        "penetrationEffectiveness": 1
+      }
+    ],
+    "45ACP": [
+      {
+        "ammoModifierTag": "Meta.Damage.AmmoModifier.Tracer",
+        "ammoType": "FMJ",
+        "armsClassTags": [
+          "Meta.Damage.Arms.Small"
+        ],
+        "baseDamage": 30,
+        "caliberKey": "45ACP",
+        "damageTag": "Meta.Damage.Bullet.45ACP",
+        "effectiveRangeM": "$undefined",
+        "id": "Id.Item.45ACP",
+        "pellets": "$undefined",
+        "penetrationEffectiveness": 1
+      },
+      {
+        "ammoModifierTag": "Meta.Damage.AmmoModifier.ArmorPiercing",
+        "ammoType": "ArmorPiercing",
+        "armsClassTags": [
+          "Meta.Damage.Arms.Small"
+        ],
+        "baseDamage": 30,
+        "caliberKey": "45ACP",
+        "damageTag": "Meta.Damage.Bullet.45ACP",
+        "effectiveRangeM": "$undefined",
+        "id": "Id.Item.45ACP.ArmorPiercing",
+        "pellets": "$undefined",
+        "penetrationEffectiveness": 0.3
+      },
+      {
+        "ammoModifierTag": "Meta.Damage.AmmoModifier.HollowPoint",
+        "ammoType": "HollowPoint",
+        "armsClassTags": [
+          "Meta.Damage.Arms.Small"
+        ],
+        "baseDamage": 30,
+        "caliberKey": "45ACP",
+        "damageTag": "Meta.Damage.Bullet.45ACP",
+        "effectiveRangeM": "$undefined",
+        "id": "Id.Item.45ACP.HollowPoint",
+        "pellets": "$undefined",
+        "penetrationEffectiveness": 1.5
+      }
+    ],
+    "45Colt": [
+      {
+        "ammoModifierTag": "Meta.Damage.AmmoModifier.Tracer",
+        "ammoType": "FMJ",
+        "armsClassTags": [
+          "Meta.Damage.Arms.Small"
+        ],
+        "baseDamage": 45,
+        "caliberKey": "45Colt",
+        "damageTag": "Meta.Damage.Bullet.45Colt",
+        "effectiveRangeM": "$undefined",
+        "id": "Id.Item.45Colt",
+        "pellets": "$undefined",
+        "penetrationEffectiveness": 1
+      },
+      {
+        "ammoModifierTag": "Meta.Damage.AmmoModifier.ArmorPiercing",
+        "ammoType": "ArmorPiercing",
+        "armsClassTags": [
+          "Meta.Damage.Arms.Small"
+        ],
+        "baseDamage": 45,
+        "caliberKey": "45Colt",
+        "damageTag": "Meta.Damage.Bullet.45Colt",
+        "effectiveRangeM": "$undefined",
+        "id": "Id.Item.45Colt.ArmorPiercing",
+        "pellets": "$undefined",
+        "penetrationEffectiveness": 0.3
+      },
+      {
+        "ammoModifierTag": "Meta.Damage.AmmoModifier.HollowPoint",
+        "ammoType": "HollowPoint",
+        "armsClassTags": [
+          "Meta.Damage.Arms.Small"
+        ],
+        "baseDamage": 45,
+        "caliberKey": "45Colt",
+        "damageTag": "Meta.Damage.Bullet.45Colt",
+        "effectiveRangeM": "$undefined",
+        "id": "Id.Item.45Colt.HollowPoint",
+        "pellets": "$undefined",
+        "penetrationEffectiveness": 1.5
+      }
+    ],
+    "50AE": [
+      {
+        "ammoModifierTag": "Meta.Damage.AmmoModifier.Tracer",
+        "ammoType": "FMJ",
+        "armsClassTags": [
+          "Meta.Damage.Arms.High"
+        ],
+        "baseDamage": 63,
+        "caliberKey": "50AE",
+        "damageTag": "Meta.Damage.Bullet.50AE",
+        "effectiveRangeM": "$undefined",
+        "id": "Id.Item.50AE",
+        "pellets": "$undefined",
+        "penetrationEffectiveness": 1
+      },
+      {
+        "ammoModifierTag": "Meta.Damage.AmmoModifier.ArmorPiercing",
+        "ammoType": "ArmorPiercing",
+        "armsClassTags": [
+          "Meta.Damage.Arms.High"
+        ],
+        "baseDamage": 63,
+        "caliberKey": "50AE",
+        "damageTag": "Meta.Damage.Bullet.50AE",
+        "effectiveRangeM": "$undefined",
+        "id": "Id.Item.50AE.ArmorPiercing",
+        "pellets": "$undefined",
+        "penetrationEffectiveness": 0.3
+      },
+      {
+        "ammoModifierTag": "Meta.Damage.AmmoModifier.HollowPoint",
+        "ammoType": "HollowPoint",
+        "armsClassTags": [
+          "Meta.Damage.Arms.High"
+        ],
+        "baseDamage": 63,
+        "caliberKey": "50AE",
+        "damageTag": "Meta.Damage.Bullet.50AE",
+        "effectiveRangeM": "$undefined",
+        "id": "Id.Item.50AE.HollowPoint",
+        "pellets": "$undefined",
+        "penetrationEffectiveness": 1.5
+      }
+    ],
+    "50Cal": [
+      {
+        "ammoModifierTag": "Meta.Damage.AmmoModifier.Tracer",
+        "ammoType": "FMJ",
+        "armsClassTags": [
+          "Meta.Damage.Arms.Special"
+        ],
+        "baseDamage": 107,
+        "caliberKey": "50Cal",
+        "damageTag": "Meta.Damage.Bullet.50Cal",
+        "effectiveRangeM": "$undefined",
+        "id": "Id.Item.50Cal",
+        "pellets": "$undefined",
+        "penetrationEffectiveness": 1
+      }
+    ],
+    "545mm": [
+      {
+        "ammoModifierTag": "Meta.Damage.AmmoModifier.FMJ",
+        "ammoType": "FMJ",
+        "armsClassTags": [
+          "Meta.Damage.Arms.Medium"
+        ],
+        "baseDamage": 26,
+        "caliberKey": "545mm",
+        "damageTag": "Meta.Damage.Bullet.545mm",
+        "effectiveRangeM": "$undefined",
+        "id": "Id.Item.545mm",
+        "pellets": "$undefined",
+        "penetrationEffectiveness": 1
+      },
+      {
+        "ammoModifierTag": "Meta.Damage.AmmoModifier.ArmorPiercing",
+        "ammoType": "ArmorPiercing",
+        "armsClassTags": [
+          "Meta.Damage.Arms.Medium"
+        ],
+        "baseDamage": 26,
+        "caliberKey": "545mm",
+        "damageTag": "Meta.Damage.Bullet.545mm",
+        "effectiveRangeM": "$undefined",
+        "id": "Id.Item.545mm.ArmorPiercing",
+        "pellets": "$undefined",
+        "penetrationEffectiveness": 0.3
+      },
+      {
+        "ammoModifierTag": "Meta.Damage.AmmoModifier.HollowPoint",
+        "ammoType": "HollowPoint",
+        "armsClassTags": [
+          "Meta.Damage.Arms.Medium"
+        ],
+        "baseDamage": 26,
+        "caliberKey": "545mm",
+        "damageTag": "Meta.Damage.Bullet.545mm",
+        "effectiveRangeM": "$undefined",
+        "id": "Id.Item.545mm.HollowPoint",
+        "pellets": "$undefined",
+        "penetrationEffectiveness": 1.5
+      }
+    ],
+    "556mm": [
+      {
+        "ammoModifierTag": "Meta.Damage.AmmoModifier.Tracer",
+        "ammoType": "FMJ",
+        "armsClassTags": [
+          "Meta.Damage.Arms.Medium"
+        ],
+        "baseDamage": 28,
+        "caliberKey": "556mm",
+        "damageTag": "Meta.Damage.Bullet.556mm",
+        "effectiveRangeM": "$undefined",
+        "id": "Id.Item.556mm",
+        "pellets": "$undefined",
+        "penetrationEffectiveness": 1
+      },
+      {
+        "ammoModifierTag": "Meta.Damage.AmmoModifier.ArmorPiercing",
+        "ammoType": "ArmorPiercing",
+        "armsClassTags": [
+          "Meta.Damage.Arms.Medium"
+        ],
+        "baseDamage": 28,
+        "caliberKey": "556mm",
+        "damageTag": "Meta.Damage.Bullet.556mm",
+        "effectiveRangeM": "$undefined",
+        "id": "Id.Item.556mm.ArmorPiercing",
+        "pellets": "$undefined",
+        "penetrationEffectiveness": 0.3
+      },
+      {
+        "ammoModifierTag": "Meta.Damage.AmmoModifier.HollowPoint",
+        "ammoType": "HollowPoint",
+        "armsClassTags": [
+          "Meta.Damage.Arms.Medium"
+        ],
+        "baseDamage": 28,
+        "caliberKey": "556mm",
+        "damageTag": "Meta.Damage.Bullet.556mm",
+        "effectiveRangeM": "$undefined",
+        "id": "Id.Item.556mm.HollowPoint",
+        "pellets": "$undefined",
+        "penetrationEffectiveness": 1.5
+      }
+    ],
+    "72mm": [
+      {
+        "ammoModifierTag": "Meta.Damage.AmmoModifier.FMJ",
+        "ammoType": "FMJ",
+        "armsClassTags": "$undefined",
+        "baseDamage": 200,
+        "caliberKey": "72mm",
+        "damageTag": "Meta.Damage.Explosive.Rocket.72mm",
+        "effectiveRangeM": "$undefined",
+        "id": "Id.Item.72mm",
+        "pellets": "$undefined",
+        "penetrationEffectiveness": 1
+      }
+    ],
+    "762mm": [
+      {
+        "ammoModifierTag": "Meta.Damage.AmmoModifier.Tracer",
+        "ammoType": "FMJ",
+        "armsClassTags": [
+          "Meta.Damage.Arms.High"
+        ],
+        "baseDamage": 42,
+        "caliberKey": "762mm",
+        "damageTag": "Meta.Damage.Bullet.762mm",
+        "effectiveRangeM": "$undefined",
+        "id": "Id.Item.762mm",
+        "pellets": "$undefined",
+        "penetrationEffectiveness": 1
+      },
+      {
+        "ammoModifierTag": "Meta.Damage.AmmoModifier.ArmorPiercing",
+        "ammoType": "ArmorPiercing",
+        "armsClassTags": [
+          "Meta.Damage.Arms.High"
+        ],
+        "baseDamage": 42,
+        "caliberKey": "762mm",
+        "damageTag": "Meta.Damage.Bullet.762mm",
+        "effectiveRangeM": "$undefined",
+        "id": "Id.Item.762mm.ArmorPiercing",
+        "pellets": "$undefined",
+        "penetrationEffectiveness": 0.3
+      },
+      {
+        "ammoModifierTag": "Meta.Damage.AmmoModifier.HollowPoint",
+        "ammoType": "HollowPoint",
+        "armsClassTags": [
+          "Meta.Damage.Arms.High"
+        ],
+        "baseDamage": 42,
+        "caliberKey": "762mm",
+        "damageTag": "Meta.Damage.Bullet.762mm",
+        "effectiveRangeM": "$undefined",
+        "id": "Id.Item.762mm.HollowPoint",
+        "pellets": "$undefined",
+        "penetrationEffectiveness": 1.5
+      }
+    ],
+    "762x51mm": [
+      {
+        "ammoModifierTag": "Meta.Damage.AmmoModifier.Tracer",
+        "ammoType": "FMJ",
+        "armsClassTags": [
+          "Meta.Damage.Arms.High"
+        ],
+        "baseDamage": 60,
+        "caliberKey": "762x51mm",
+        "damageTag": "Meta.Damage.Bullet.762x51mm",
+        "effectiveRangeM": "$undefined",
+        "id": "Id.Item.762x51mm",
+        "pellets": "$undefined",
+        "penetrationEffectiveness": 1
+      },
+      {
+        "ammoModifierTag": "Meta.Damage.AmmoModifier.ArmorPiercing",
+        "ammoType": "ArmorPiercing",
+        "armsClassTags": [
+          "Meta.Damage.Arms.High"
+        ],
+        "baseDamage": 60,
+        "caliberKey": "762x51mm",
+        "damageTag": "Meta.Damage.Bullet.762x51mm",
+        "effectiveRangeM": "$undefined",
+        "id": "Id.Item.762x51mm.ArmorPiercing",
+        "pellets": "$undefined",
+        "penetrationEffectiveness": 0.3
+      },
+      {
+        "ammoModifierTag": "Meta.Damage.AmmoModifier.HollowPoint",
+        "ammoType": "HollowPoint",
+        "armsClassTags": [
+          "Meta.Damage.Arms.High"
+        ],
+        "baseDamage": 60,
+        "caliberKey": "762x51mm",
+        "damageTag": "Meta.Damage.Bullet.762x51mm",
+        "effectiveRangeM": "$undefined",
+        "id": "Id.Item.762x51mm.HollowPoint",
+        "pellets": "$undefined",
+        "penetrationEffectiveness": 1.5
+      }
+    ],
+    "762x54mm": [
+      {
+        "ammoModifierTag": "Meta.Damage.AmmoModifier.Tracer",
+        "ammoType": "FMJ",
+        "armsClassTags": [
+          "Meta.Damage.Arms.High"
+        ],
+        "baseDamage": 55,
+        "caliberKey": "762x54mm",
+        "damageTag": "Meta.Damage.Bullet.762x54mm",
+        "effectiveRangeM": "$undefined",
+        "id": "Id.Item.762x54mm",
+        "pellets": "$undefined",
+        "penetrationEffectiveness": 1
+      },
+      {
+        "ammoModifierTag": "Meta.Damage.AmmoModifier.ArmorPiercing",
+        "ammoType": "ArmorPiercing",
+        "armsClassTags": [
+          "Meta.Damage.Arms.High"
+        ],
+        "baseDamage": 55,
+        "caliberKey": "762x54mm",
+        "damageTag": "Meta.Damage.Bullet.762x54mm",
+        "effectiveRangeM": "$undefined",
+        "id": "Id.Item.762x54mm.ArmorPiercing",
+        "pellets": "$undefined",
+        "penetrationEffectiveness": 0.3
+      },
+      {
+        "ammoModifierTag": "Meta.Damage.AmmoModifier.HollowPoint",
+        "ammoType": "HollowPoint",
+        "armsClassTags": [
+          "Meta.Damage.Arms.High"
+        ],
+        "baseDamage": 55,
+        "caliberKey": "762x54mm",
+        "damageTag": "Meta.Damage.Bullet.762x54mm",
+        "effectiveRangeM": "$undefined",
+        "id": "Id.Item.762x54mm.HollowPoint",
+        "pellets": "$undefined",
+        "penetrationEffectiveness": 1.5
+      }
+    ],
+    "84mm": [
+      {
+        "ammoModifierTag": "Meta.Damage.AmmoModifier.FMJ",
+        "ammoType": "FMJ",
+        "armsClassTags": "$undefined",
+        "baseDamage": 100,
+        "caliberKey": "84mm",
+        "damageTag": "Meta.Damage.Explosive.Rocket.84mm",
+        "effectiveRangeM": "$undefined",
+        "id": "Id.Item.84mm",
+        "pellets": "$undefined",
+        "penetrationEffectiveness": 1
+      }
+    ],
+    "93mm": [
+      {
+        "ammoModifierTag": "Meta.Damage.AmmoModifier.FMJ",
+        "ammoType": "FMJ",
+        "armsClassTags": "$undefined",
+        "baseDamage": 110,
+        "caliberKey": "93mm",
+        "damageTag": "Meta.Damage.Explosive.Rocket.93mm",
+        "effectiveRangeM": "$undefined",
+        "id": "Id.Item.93mm",
+        "pellets": "$undefined",
+        "penetrationEffectiveness": 1
+      }
+    ],
+    "9mm": [
+      {
+        "ammoModifierTag": "Meta.Damage.AmmoModifier.Tracer",
+        "ammoType": "FMJ",
+        "armsClassTags": [
+          "Meta.Damage.Arms.Small"
+        ],
+        "baseDamage": 22,
+        "caliberKey": "9mm",
+        "damageTag": "Meta.Damage.Bullet.9mm",
+        "effectiveRangeM": "$undefined",
+        "id": "Id.Item.9mm",
+        "pellets": "$undefined",
+        "penetrationEffectiveness": 1
+      },
+      {
+        "ammoModifierTag": "Meta.Damage.AmmoModifier.ArmorPiercing",
+        "ammoType": "ArmorPiercing",
+        "armsClassTags": [
+          "Meta.Damage.Arms.Small"
+        ],
+        "baseDamage": 22,
+        "caliberKey": "9mm",
+        "damageTag": "Meta.Damage.Bullet.9mm",
+        "effectiveRangeM": "$undefined",
+        "id": "Id.Item.9mm.ArmorPiercing",
+        "pellets": "$undefined",
+        "penetrationEffectiveness": 0.3
+      },
+      {
+        "ammoModifierTag": "Meta.Damage.AmmoModifier.HollowPoint",
+        "ammoType": "HollowPoint",
+        "armsClassTags": [
+          "Meta.Damage.Arms.Small"
+        ],
+        "baseDamage": 22,
+        "caliberKey": "9mm",
+        "damageTag": "Meta.Damage.Bullet.9mm",
+        "effectiveRangeM": "$undefined",
+        "id": "Id.Item.9mm.HollowPoint",
+        "pellets": "$undefined",
+        "penetrationEffectiveness": 1.5
+      }
+    ],
+    "Arrow": [
+      {
+        "ammoModifierTag": "Meta.Damage.AmmoModifier.FMJ",
+        "ammoType": "Arrow",
+        "armsClassTags": [
+          "Meta.Damage.Arms.High"
+        ],
+        "baseDamage": 77,
+        "caliberKey": "Arrow",
+        "damageTag": "Meta.Damage.Bullet.Arrow",
+        "effectiveRangeM": "$undefined",
+        "id": "Id.Item.Arrow",
+        "pellets": "$undefined",
+        "penetrationEffectiveness": 1
+      }
+    ],
+    "Arrow.Explosive": [
+      {
+        "ammoModifierTag": "Meta.Damage.AmmoModifier.FMJ",
+        "ammoType": "FMJ",
+        "armsClassTags": [
+          "Meta.Damage.Arms.High"
+        ],
+        "baseDamage": 150,
+        "caliberKey": "Arrow.Explosive",
+        "damageTag": "Meta.Damage.Bullet.Arrow.Explosive",
+        "effectiveRangeM": 0,
+        "id": "Id.Item.Arrow.Explosive",
+        "pellets": "$undefined",
+        "penetrationEffectiveness": 1
+      }
+    ],
+    "DroneProjectile": [
+      {
+        "ammoModifierTag": "Meta.Damage.AmmoModifier.FMJ",
+        "ammoType": "FMJ",
+        "armsClassTags": "$undefined",
+        "baseDamage": 120,
+        "caliberKey": "DroneProjectile",
+        "damageTag": "Meta.Damage.Explosive.Drone",
+        "effectiveRangeM": "$undefined",
+        "id": "Id.Item.DroneProjectile",
+        "pellets": "$undefined",
+        "penetrationEffectiveness": 1
+      }
+    ]
+  },
+  "weaponRoleAffinity": {
+    "AR": {
+      "perkCount": 6,
+      "roleId": "infantry",
+      "roleTag": "Meta.Role.Infantry",
+      "source": "mastery"
+    },
+    "Bow": {
+      "perkCount": 0,
+      "roleId": "recon",
+      "roleTag": "Meta.Role.Recon",
+      "source": "unlockGate"
+    },
+    "DMR": {
+      "perkCount": 6,
+      "roleId": "recon",
+      "roleTag": "Meta.Role.Recon",
+      "source": "mastery"
+    },
+    "LMG": {
+      "perkCount": 6,
+      "roleId": "support",
+      "roleTag": "Meta.Role.Support",
+      "source": "mastery"
+    },
+    "Launcher": {
+      "perkCount": 1,
+      "roleId": "support",
+      "roleTag": "Meta.Role.Support",
+      "source": "mastery"
+    },
+    "Pistol": {
+      "perkCount": 1,
+      "roleId": "recon",
+      "roleTag": "Meta.Role.Recon",
+      "source": "mastery"
+    },
+    "SMG": {
+      "perkCount": 6,
+      "roleId": "infantry",
+      "roleTag": "Meta.Role.Infantry",
+      "source": "mastery"
+    },
+    "Shotgun": {
+      "perkCount": 6,
+      "roleId": "support",
+      "roleTag": "Meta.Role.Support",
+      "source": "mastery"
+    },
+    "Sniper": {
+      "perkCount": 6,
+      "roleId": "recon",
+      "roleTag": "Meta.Role.Recon",
+      "source": "mastery"
+    }
+  },
+  "weapons": [
+    {
+      "archetype": "AR",
+      "caliberKey": "556mm",
+      "damageFalloff": [
+        {
+          "multiplier": 1,
+          "rangeM": 0
+        },
+        {
+          "multiplier": 1,
+          "rangeM": 300
+        },
+        {
+          "multiplier": 0.2,
+          "rangeM": 1200
+        }
+      ],
+      "damageTag": "Meta.Damage.Weapon.AR.A91",
+      "effectiveRangeM": 300,
+      "fireModes": [
+        "SemiAutomatic",
+        "Burst"
+      ],
+      "fireRate": {
+        "roundsPerMinute": 700,
+        "shotsPerSecond": 11.666666666666666,
+        "source": "exported"
+      },
+      "hitLocationProfile": "Meta.Damage.Weapon.AR",
+      "id": "Id.Item.A91",
+      "name": "A-91",
+      "rechamberTimeS": "$undefined",
+      "roundsPerMinute": 700,
+      "slug": "a91",
+      "unlockLevel": null,
+      "weaponRules": [
+        {
+          "alignment": "$undefined",
+          "amount": 0,
+          "category": "Meta.Damage.Category.Weapon",
+          "customOperation": "$undefined",
+          "hitLocations": [
+            "Infantry"
+          ],
+          "operation": "Percentage_Ongoing",
+          "sourceRequirements": [
+            "Meta.Damage.Bullet.556mm",
+            "Meta.Damage.Weapon.AR.A91"
+          ],
+          "targetRequirements": "$undefined"
+        }
+      ]
+    },
+    {
+      "archetype": "AR",
+      "caliberKey": "556mm",
+      "damageFalloff": [
+        {
+          "multiplier": 1,
+          "rangeM": 0
+        },
+        {
+          "multiplier": 1,
+          "rangeM": 300
+        },
+        {
+          "multiplier": 0.2,
+          "rangeM": 1200
+        }
+      ],
+      "damageTag": "Meta.Damage.Weapon.AR.A91",
+      "effectiveRangeM": 300,
+      "fireModes": [
+        "SemiAutomatic",
+        "Burst"
+      ],
+      "fireRate": {
+        "roundsPerMinute": 700,
+        "shotsPerSecond": 11.666666666666666,
+        "source": "exported"
+      },
+      "hitLocationProfile": "Meta.Damage.Weapon.AR",
+      "id": "Id.Item.WEPN_033",
+      "name": "Bushmaster M17S",
+      "rechamberTimeS": "$undefined",
+      "roundsPerMinute": 700,
+      "slug": "bushmaster-m17s",
+      "unlockLevel": null,
+      "weaponRules": [
+        {
+          "alignment": "$undefined",
+          "amount": 0,
+          "category": "Meta.Damage.Category.Weapon",
+          "customOperation": "$undefined",
+          "hitLocations": [
+            "Infantry"
+          ],
+          "operation": "Percentage_Ongoing",
+          "sourceRequirements": [
+            "Meta.Damage.Bullet.556mm",
+            "Meta.Damage.Weapon.AR.A91"
+          ],
+          "targetRequirements": "$undefined"
+        }
+      ]
+    },
+    {
+      "archetype": "AR",
+      "caliberKey": "556mm",
+      "damageFalloff": [
+        {
+          "multiplier": 1,
+          "rangeM": 0
+        },
+        {
+          "multiplier": 1,
+          "rangeM": 300
+        },
+        {
+          "multiplier": 0.2,
+          "rangeM": 1200
+        }
+      ],
+      "damageTag": "Meta.Damage.Weapon.AR.KH2002",
+      "effectiveRangeM": 300,
+      "fireModes": [
+        "SemiAutomatic",
+        "Burst"
+      ],
+      "fireRate": {
+        "roundsPerMinute": 700,
+        "shotsPerSecond": 11.666666666666666,
+        "source": "exported"
+      },
+      "hitLocationProfile": "Meta.Damage.Weapon.AR",
+      "id": "Id.Item.KH2002",
+      "name": "KH-2002",
+      "rechamberTimeS": "$undefined",
+      "roundsPerMinute": 700,
+      "slug": "kh2002",
+      "unlockLevel": null,
+      "weaponRules": [
+        {
+          "alignment": "$undefined",
+          "amount": 0,
+          "category": "Meta.Damage.Category.Weapon",
+          "customOperation": "$undefined",
+          "hitLocations": [
+            "Infantry"
+          ],
+          "operation": "Percentage_Ongoing",
+          "sourceRequirements": [
+            "Meta.Damage.Bullet.556mm",
+            "Meta.Damage.Weapon.AR.KH2002"
+          ],
+          "targetRequirements": "$undefined"
+        }
+      ]
+    },
+    {
+      "archetype": "AR",
+      "caliberKey": "556mm",
+      "damageFalloff": [
+        {
+          "multiplier": 1,
+          "rangeM": 0
+        },
+        {
+          "multiplier": 1,
+          "rangeM": 300
+        },
+        {
+          "multiplier": 0.2,
+          "rangeM": 1200
+        }
+      ],
+      "damageTag": "Meta.Damage.Weapon.AR.A91",
+      "effectiveRangeM": 550,
+      "fireModes": [
+        "Automatic",
+        "SemiAutomatic"
+      ],
+      "fireRate": {
+        "roundsPerMinute": 750,
+        "shotsPerSecond": 12.5,
+        "source": "exported"
+      },
+      "hitLocationProfile": "Meta.Damage.Weapon.AR",
+      "id": "Id.Item.TAR21",
+      "name": "T-21",
+      "rechamberTimeS": "$undefined",
+      "roundsPerMinute": 750,
+      "slug": "t-21",
+      "unlockLevel": null,
+      "weaponRules": [
+        {
+          "alignment": "$undefined",
+          "amount": 0,
+          "category": "Meta.Damage.Category.Weapon",
+          "customOperation": "$undefined",
+          "hitLocations": [
+            "Infantry"
+          ],
+          "operation": "Percentage_Ongoing",
+          "sourceRequirements": [
+            "Meta.Damage.Bullet.556mm",
+            "Meta.Damage.Weapon.AR.A91"
+          ],
+          "targetRequirements": "$undefined"
+        }
+      ]
+    },
+    {
+      "archetype": "AR",
+      "caliberKey": "545mm",
+      "damageFalloff": [
+        {
+          "multiplier": 1,
+          "rangeM": 0
+        },
+        {
+          "multiplier": 1,
+          "rangeM": 500
+        },
+        {
+          "multiplier": 0.2,
+          "rangeM": 1200
+        }
+      ],
+      "damageTag": "Meta.Damage.Weapon.AR.AK47M",
+      "effectiveRangeM": 500,
+      "fireModes": [
+        "Automatic",
+        "SemiAutomatic"
+      ],
+      "fireRate": {
+        "roundsPerMinute": 650,
+        "shotsPerSecond": 10.833333333333334,
+        "source": "exported"
+      },
+      "hitLocationProfile": "Meta.Damage.Weapon.AR",
+      "id": "Id.Item.AK74M",
+      "name": "AK74",
+      "rechamberTimeS": "$undefined",
+      "roundsPerMinute": 650,
+      "slug": "ak74m",
+      "unlockLevel": 3,
+      "weaponRules": [
+        {
+          "alignment": "$undefined",
+          "amount": 0,
+          "category": "Meta.Damage.Category.Weapon",
+          "customOperation": "$undefined",
+          "hitLocations": [
+            "Infantry"
+          ],
+          "operation": "Percentage_Ongoing",
+          "sourceRequirements": [
+            "Meta.Damage.Bullet.545mm",
+            "Meta.Damage.Weapon.AR.AK47M"
+          ],
+          "targetRequirements": "$undefined"
+        }
+      ]
+    },
+    {
+      "archetype": "AR",
+      "caliberKey": "556mm",
+      "damageFalloff": [
+        {
+          "multiplier": 1,
+          "rangeM": 0
+        },
+        {
+          "multiplier": 1,
+          "rangeM": 400
+        },
+        {
+          "multiplier": 0.2,
+          "rangeM": 1200
+        }
+      ],
+      "damageTag": "Meta.Damage.Weapon.AR.Galil",
+      "effectiveRangeM": 400,
+      "fireModes": [
+        "Automatic",
+        "SemiAutomatic"
+      ],
+      "fireRate": {
+        "roundsPerMinute": 650,
+        "shotsPerSecond": 10.833333333333334,
+        "source": "exported"
+      },
+      "hitLocationProfile": "Meta.Damage.Weapon.AR",
+      "id": "Id.Item.WEPN_029",
+      "name": "Galil",
+      "rechamberTimeS": "$undefined",
+      "roundsPerMinute": 650,
+      "slug": "galil",
+      "unlockLevel": 10,
+      "weaponRules": []
+    },
+    {
+      "archetype": "AR",
+      "caliberKey": "556mm",
+      "damageFalloff": [
+        {
+          "multiplier": 1,
+          "rangeM": 0
+        },
+        {
+          "multiplier": 1,
+          "rangeM": 500
+        },
+        {
+          "multiplier": 0.2,
+          "rangeM": 1200
+        }
+      ],
+      "damageTag": "Meta.Damage.Weapon.AR.M4",
+      "effectiveRangeM": 500,
+      "fireModes": [
+        "Automatic",
+        "SemiAutomatic"
+      ],
+      "fireRate": {
+        "roundsPerMinute": 800,
+        "shotsPerSecond": 13.333333333333334,
+        "source": "exported"
+      },
+      "hitLocationProfile": "Meta.Damage.Weapon.AR",
+      "id": "Id.Item.M4",
+      "name": "M4",
+      "rechamberTimeS": "$undefined",
+      "roundsPerMinute": 800,
+      "slug": "m4",
+      "unlockLevel": 20,
+      "weaponRules": [
+        {
+          "alignment": "$undefined",
+          "amount": 0,
+          "category": "Meta.Damage.Category.Weapon",
+          "customOperation": "$undefined",
+          "hitLocations": [
+            "Infantry"
+          ],
+          "operation": "Percentage_Ongoing",
+          "sourceRequirements": [
+            "Meta.Damage.Bullet.556mm",
+            "Meta.Damage.Weapon.AR.M4"
+          ],
+          "targetRequirements": "$undefined"
+        }
+      ]
+    },
+    {
+      "archetype": "AR",
+      "caliberKey": "308Win",
+      "damageFalloff": [
+        {
+          "multiplier": 1,
+          "rangeM": 0
+        },
+        {
+          "multiplier": 1,
+          "rangeM": 800
+        },
+        {
+          "multiplier": 0.2,
+          "rangeM": 1200
+        }
+      ],
+      "damageTag": "Meta.Damage.Weapon.AR.Fal",
+      "effectiveRangeM": 800,
+      "fireModes": [
+        "Automatic",
+        "SemiAutomatic"
+      ],
+      "fireRate": {
+        "roundsPerMinute": 650,
+        "shotsPerSecond": 10.833333333333334,
+        "source": "exported"
+      },
+      "hitLocationProfile": "Meta.Damage.Weapon.AR",
+      "id": "Id.Item.WEPN_030",
+      "name": "FAL",
+      "rechamberTimeS": "$undefined",
+      "roundsPerMinute": 650,
+      "slug": "fal",
+      "unlockLevel": 35,
+      "weaponRules": [
+        {
+          "alignment": "$undefined",
+          "amount": 0,
+          "category": "Meta.Damage.Category.Weapon",
+          "customOperation": "$undefined",
+          "hitLocations": [
+            "Infantry"
+          ],
+          "operation": "Percentage_Ongoing",
+          "sourceRequirements": [
+            "Meta.Damage.Bullet.308Win",
+            "Meta.Damage.Weapon.AR.Fal"
+          ],
+          "targetRequirements": "$undefined"
+        }
+      ]
+    },
+    {
+      "archetype": "SMG",
+      "caliberKey": "9mm",
+      "damageFalloff": [
+        {
+          "multiplier": 1,
+          "rangeM": 0
+        },
+        {
+          "multiplier": 1,
+          "rangeM": 100
+        },
+        {
+          "multiplier": 0.6,
+          "rangeM": 200
+        },
+        {
+          "multiplier": 0.1,
+          "rangeM": 1200
+        }
+      ],
+      "damageTag": "Meta.Damage.Weapon.SMG.MP7",
+      "effectiveRangeM": "$undefined",
+      "fireModes": [
+        "Automatic",
+        "SemiAutomatic"
+      ],
+      "fireRate": {
+        "roundsPerMinute": 900,
+        "shotsPerSecond": 15,
+        "source": "exported"
+      },
+      "hitLocationProfile": "Meta.Damage.Weapon.SMG",
+      "id": "Id.Item.MP9",
+      "name": "AMP-9",
+      "rechamberTimeS": "$undefined",
+      "roundsPerMinute": 900,
+      "slug": "mp9",
+      "unlockLevel": null,
+      "weaponRules": [
+        {
+          "alignment": "$undefined",
+          "amount": 0,
+          "category": "Meta.Damage.Category.Weapon",
+          "customOperation": "$undefined",
+          "hitLocations": "$undefined",
+          "operation": "Percentage_Ongoing",
+          "sourceRequirements": [
+            "Meta.Damage.Bullet.9mm",
+            "Meta.Damage.Weapon.SMG.MP7"
+          ],
+          "targetRequirements": "$undefined"
+        }
+      ]
+    },
+    {
+      "archetype": "SMG",
+      "caliberKey": "9mm",
+      "damageFalloff": [
+        {
+          "multiplier": 1,
+          "rangeM": 0
+        },
+        {
+          "multiplier": 1,
+          "rangeM": 200
+        },
+        {
+          "multiplier": 0.6,
+          "rangeM": 300
+        },
+        {
+          "multiplier": 0.1,
+          "rangeM": 1200
+        }
+      ],
+      "damageTag": "Meta.Damage.Weapon.SMG.SMG3",
+      "effectiveRangeM": 200,
+      "fireModes": [
+        "Automatic",
+        "SemiAutomatic"
+      ],
+      "fireRate": {
+        "roundsPerMinute": 800,
+        "shotsPerSecond": 13.333333333333334,
+        "source": "exported"
+      },
+      "hitLocationProfile": "Meta.Damage.Weapon.SMG",
+      "id": "Id.Item.SMG_03",
+      "name": "PP-19 Vityaz",
+      "rechamberTimeS": "$undefined",
+      "roundsPerMinute": 800,
+      "slug": "pp-19-vityaz",
+      "unlockLevel": 4,
+      "weaponRules": [
+        {
+          "alignment": "$undefined",
+          "amount": 0,
+          "category": "Meta.Damage.Category.Weapon",
+          "customOperation": "$undefined",
+          "hitLocations": "$undefined",
+          "operation": "Percentage_Ongoing",
+          "sourceRequirements": [
+            "Meta.Damage.Bullet.9mm",
+            "Meta.Damage.Weapon.SMG.SMG3"
+          ],
+          "targetRequirements": "$undefined"
+        }
+      ]
+    },
+    {
+      "archetype": "SMG",
+      "caliberKey": "9mm",
+      "damageFalloff": [
+        {
+          "multiplier": 1,
+          "rangeM": 0
+        },
+        {
+          "multiplier": 1,
+          "rangeM": 200
+        },
+        {
+          "multiplier": 0.6,
+          "rangeM": 300
+        },
+        {
+          "multiplier": 0.1,
+          "rangeM": 1200
+        }
+      ],
+      "damageTag": "Meta.Damage.Weapon.SMG.MP5",
+      "effectiveRangeM": 200,
+      "fireModes": [
+        "Automatic",
+        "SemiAutomatic"
+      ],
+      "fireRate": {
+        "roundsPerMinute": 800,
+        "shotsPerSecond": 13.333333333333334,
+        "source": "exported"
+      },
+      "hitLocationProfile": "Meta.Damage.Weapon.SMG",
+      "id": "Id.Item.WEPN_028",
+      "name": "MP5",
+      "rechamberTimeS": "$undefined",
+      "roundsPerMinute": 800,
+      "slug": "mp5",
+      "unlockLevel": 15,
+      "weaponRules": []
+    },
+    {
+      "archetype": "SMG",
+      "caliberKey": "45ACP",
+      "damageFalloff": [
+        {
+          "multiplier": 1,
+          "rangeM": 0
+        },
+        {
+          "multiplier": 1,
+          "rangeM": 50
+        },
+        {
+          "multiplier": 0.6,
+          "rangeM": 70
+        },
+        {
+          "multiplier": 0.2,
+          "rangeM": 1200
+        }
+      ],
+      "damageTag": "Meta.Damage.Weapon.SMG.Vector",
+      "effectiveRangeM": 50,
+      "fireModes": [
+        "Automatic",
+        "SemiAutomatic"
+      ],
+      "fireRate": {
+        "roundsPerMinute": 1200,
+        "shotsPerSecond": 20,
+        "source": "exported"
+      },
+      "hitLocationProfile": "Meta.Damage.Weapon.SMG",
+      "id": "Id.Item.Vector",
+      "name": "Super-45",
+      "rechamberTimeS": "$undefined",
+      "roundsPerMinute": 1200,
+      "slug": "vector",
+      "unlockLevel": 35,
+      "weaponRules": [
+        {
+          "alignment": "$undefined",
+          "amount": 0,
+          "category": "Meta.Damage.Category.Weapon",
+          "customOperation": "$undefined",
+          "hitLocations": [
+            "Infantry"
+          ],
+          "operation": "Percentage_Ongoing",
+          "sourceRequirements": [
+            "Meta.Damage.Weapon.SMG.Vector",
+            "Meta.Damage.Bullet.45ACP"
+          ],
+          "targetRequirements": "$undefined"
+        }
+      ]
+    },
+    {
+      "archetype": "Sniper",
+      "caliberKey": "556mm",
+      "damageFalloff": [
+        {
+          "multiplier": 1,
+          "rangeM": 0
+        },
+        {
+          "multiplier": 1,
+          "rangeM": 300
+        },
+        {
+          "multiplier": 0.2,
+          "rangeM": 1200
+        }
+      ],
+      "damageTag": "Meta.Damage.Weapon.Sniper.WEPN_035",
+      "effectiveRangeM": 300,
+      "fireModes": [
+        "SemiAutomatic"
+      ],
+      "fireRate": {
+        "roundsPerMinute": 46,
+        "shotsPerSecond": 0.7666666666666667,
+        "source": "exported"
+      },
+      "hitLocationProfile": "Meta.Damage.Weapon.Sniper",
+      "id": "Id.Item.WEPN_035",
+      "name": "TD 侦察步枪",
+      "rechamberTimeS": "$undefined",
+      "roundsPerMinute": 46,
+      "slug": "scout-rifle-td",
+      "unlockLevel": null,
+      "weaponRules": []
+    },
+    {
+      "archetype": "Sniper",
+      "caliberKey": "762x54mm",
+      "damageFalloff": [
+        {
+          "multiplier": 1,
+          "rangeM": 0
+        },
+        {
+          "multiplier": 1,
+          "rangeM": 500
+        },
+        {
+          "multiplier": 0.4,
+          "rangeM": 1200
+        }
+      ],
+      "damageTag": "Meta.Damage.Weapon.Sniper.Mosin",
+      "effectiveRangeM": 500,
+      "fireModes": [
+        "SemiAutomatic"
+      ],
+      "fireRate": {
+        "roundsPerMinute": 46,
+        "shotsPerSecond": 0.7666666666666667,
+        "source": "exported"
+      },
+      "hitLocationProfile": "Meta.Damage.Weapon.Sniper",
+      "id": "Id.Item.Mosin",
+      "name": "莫辛步枪",
+      "rechamberTimeS": 0.25,
+      "roundsPerMinute": 46,
+      "slug": "mosin",
+      "unlockLevel": 10,
+      "weaponRules": [
+        {
+          "alignment": "$undefined",
+          "amount": 0,
+          "category": "Meta.Damage.Category.Weapon",
+          "customOperation": "$undefined",
+          "hitLocations": [
+            "Infantry"
+          ],
+          "operation": "Percentage_Ongoing",
+          "sourceRequirements": [
+            "Meta.Damage.Weapon.Sniper.Mosin",
+            "Meta.Damage.Bullet.762x54mm"
+          ],
+          "targetRequirements": "$undefined"
+        }
+      ]
+    },
+    {
+      "archetype": "Sniper",
+      "caliberKey": "762x54mm",
+      "damageFalloff": [
+        {
+          "multiplier": 1,
+          "rangeM": 0
+        },
+        {
+          "multiplier": 1,
+          "rangeM": 1000
+        },
+        {
+          "multiplier": 0.4,
+          "rangeM": 1500
+        }
+      ],
+      "damageTag": "Meta.Damage.Weapon.Sniper.SV98",
+      "effectiveRangeM": 1000,
+      "fireModes": [
+        "SemiAutomatic"
+      ],
+      "fireRate": {
+        "roundsPerMinute": 46,
+        "shotsPerSecond": 0.7666666666666667,
+        "source": "exported"
+      },
+      "hitLocationProfile": "Meta.Damage.Weapon.Sniper",
+      "id": "Id.Item.SV98",
+      "name": "SV98",
+      "rechamberTimeS": 0.3,
+      "roundsPerMinute": 46,
+      "slug": "sv98",
+      "unlockLevel": 19,
+      "weaponRules": [
+        {
+          "alignment": "$undefined",
+          "amount": 0,
+          "category": "Meta.Damage.Category.Weapon",
+          "customOperation": "$undefined",
+          "hitLocations": [
+            "Infantry"
+          ],
+          "operation": "Percentage_Ongoing",
+          "sourceRequirements": [
+            "Meta.Damage.Weapon.Sniper.SV98",
+            "Meta.Damage.Bullet.762x54mm"
+          ],
+          "targetRequirements": "$undefined"
+        }
+      ]
+    },
+    {
+      "archetype": "Sniper",
+      "caliberKey": "308Win",
+      "damageFalloff": [
+        {
+          "multiplier": 1,
+          "rangeM": 0
+        },
+        {
+          "multiplier": 1,
+          "rangeM": 500
+        },
+        {
+          "multiplier": 1,
+          "rangeM": 1000
+        },
+        {
+          "multiplier": 0.4,
+          "rangeM": 1600
+        }
+      ],
+      "damageTag": "Meta.Damage.Weapon.Sniper.MRAD",
+      "effectiveRangeM": 1000,
+      "fireModes": [
+        "SemiAutomatic"
+      ],
+      "fireRate": {
+        "roundsPerMinute": 46,
+        "shotsPerSecond": 0.7666666666666667,
+        "source": "exported"
+      },
+      "hitLocationProfile": "Meta.Damage.Weapon.Sniper",
+      "id": "Id.Item.MK22",
+      "name": "MK22",
+      "rechamberTimeS": 0.4,
+      "roundsPerMinute": 46,
+      "slug": "mk22",
+      "unlockLevel": 25,
+      "weaponRules": [
+        {
+          "alignment": "$undefined",
+          "amount": 0,
+          "category": "Meta.Damage.Category.Weapon",
+          "customOperation": "$undefined",
+          "hitLocations": [
+            "Infantry"
+          ],
+          "operation": "Percentage_Ongoing",
+          "sourceRequirements": [
+            "Meta.Damage.Bullet.308Win",
+            "Meta.Damage.Weapon.Sniper.MRAD"
+          ],
+          "targetRequirements": "$undefined"
+        }
+      ]
+    },
+    {
+      "archetype": "Sniper",
+      "caliberKey": "50Cal",
+      "damageFalloff": [
+        {
+          "multiplier": 1,
+          "rangeM": 0
+        },
+        {
+          "multiplier": 1,
+          "rangeM": 500
+        },
+        {
+          "multiplier": 1,
+          "rangeM": 2000
+        },
+        {
+          "multiplier": 0.4,
+          "rangeM": 2500
+        }
+      ],
+      "damageTag": "Meta.Damage.Weapon.Sniper.MRAD",
+      "effectiveRangeM": 2000,
+      "fireModes": [
+        "SemiAutomatic"
+      ],
+      "fireRate": {
+        "roundsPerMinute": 41.5,
+        "shotsPerSecond": 0.6916666666666667,
+        "source": "exported"
+      },
+      "hitLocationProfile": "Meta.Damage.Weapon.Sniper",
+      "id": "Id.Item.SR_04",
+      "name": "AMR 50",
+      "rechamberTimeS": 0.24,
+      "roundsPerMinute": 41.5,
+      "slug": "amr-50",
+      "unlockLevel": 35,
+      "weaponRules": [
+        {
+          "alignment": "$undefined",
+          "amount": 0,
+          "category": "Meta.Damage.Category.Weapon",
+          "customOperation": "$undefined",
+          "hitLocations": [
+            "Infantry"
+          ],
+          "operation": "Percentage_Ongoing",
+          "sourceRequirements": [
+            "Meta.Damage.Bullet.308Win",
+            "Meta.Damage.Weapon.Sniper.MRAD"
+          ],
+          "targetRequirements": "$undefined"
+        }
+      ]
+    },
+    {
+      "archetype": "DMR",
+      "caliberKey": "762mm",
+      "damageFalloff": [
+        {
+          "multiplier": 1,
+          "rangeM": 0
+        },
+        {
+          "multiplier": 1,
+          "rangeM": 400
+        },
+        {
+          "multiplier": 0.2,
+          "rangeM": 1200
+        }
+      ],
+      "damageTag": "Meta.Damage.Weapon.DMR.SKS",
+      "effectiveRangeM": 400,
+      "fireModes": [
+        "SemiAutomatic"
+      ],
+      "fireRate": {
+        "roundsPerMinute": 420,
+        "shotsPerSecond": 7,
+        "source": "exported"
+      },
+      "hitLocationProfile": "Meta.Damage.Weapon.DMR",
+      "id": "Id.Item.SKS",
+      "name": "SKS",
+      "rechamberTimeS": "$undefined",
+      "roundsPerMinute": 420,
+      "slug": "sks",
+      "unlockLevel": 5,
+      "weaponRules": [
+        {
+          "alignment": "$undefined",
+          "amount": 0,
+          "category": "Meta.Damage.Category.Weapon",
+          "customOperation": "$undefined",
+          "hitLocations": [
+            "Infantry"
+          ],
+          "operation": "Percentage_Ongoing",
+          "sourceRequirements": [
+            "Meta.Damage.Bullet.762mm",
+            "Meta.Damage.Weapon.DMR.SKS"
+          ],
+          "targetRequirements": "$undefined"
+        }
+      ]
+    },
+    {
+      "archetype": "DMR",
+      "caliberKey": "762x54mm",
+      "damageFalloff": [
+        {
+          "multiplier": 1,
+          "rangeM": 0
+        },
+        {
+          "multiplier": 1,
+          "rangeM": 800
+        },
+        {
+          "multiplier": 0.2,
+          "rangeM": 1200
+        }
+      ],
+      "damageTag": "Meta.Damage.Weapon.DMR.SVDM",
+      "effectiveRangeM": 800,
+      "fireModes": [
+        "SemiAutomatic"
+      ],
+      "fireRate": {
+        "roundsPerMinute": 480,
+        "shotsPerSecond": 8,
+        "source": "exported"
+      },
+      "hitLocationProfile": "Meta.Damage.Weapon.DMR",
+      "id": "Id.Item.SVDM",
+      "name": "SVD",
+      "rechamberTimeS": 0.25,
+      "roundsPerMinute": 480,
+      "slug": "svdm",
+      "unlockLevel": 12,
+      "weaponRules": [
+        {
+          "alignment": "$undefined",
+          "amount": 0,
+          "category": "Meta.Damage.Category.Weapon",
+          "customOperation": "$undefined",
+          "hitLocations": [
+            "Infantry"
+          ],
+          "operation": "Percentage_Ongoing",
+          "sourceRequirements": [
+            "Meta.Damage.Bullet.762x54mm",
+            "Meta.Damage.Weapon.DMR.SVDM"
+          ],
+          "targetRequirements": "$undefined"
+        }
+      ]
+    },
+    {
+      "archetype": "DMR",
+      "caliberKey": "308Win",
+      "damageFalloff": [
+        {
+          "multiplier": 1,
+          "rangeM": 0
+        },
+        {
+          "multiplier": 1,
+          "rangeM": 500
+        },
+        {
+          "multiplier": 0.2,
+          "rangeM": 1200
+        }
+      ],
+      "damageTag": "Meta.Damage.Weapon.DMR.RFB",
+      "effectiveRangeM": 500,
+      "fireModes": [
+        "SemiAutomatic"
+      ],
+      "fireRate": {
+        "roundsPerMinute": 450,
+        "shotsPerSecond": 7.5,
+        "source": "exported"
+      },
+      "hitLocationProfile": "Meta.Damage.Weapon.DMR",
+      "id": "Id.Item.RFB",
+      "name": "BMR-308",
+      "rechamberTimeS": "$undefined",
+      "roundsPerMinute": 450,
+      "slug": "rfb",
+      "unlockLevel": 30,
+      "weaponRules": [
+        {
+          "alignment": "$undefined",
+          "amount": 0,
+          "category": "Meta.Damage.Category.Weapon",
+          "customOperation": "$undefined",
+          "hitLocations": [
+            "Infantry"
+          ],
+          "operation": "Percentage_Ongoing",
+          "sourceRequirements": [
+            "Meta.Damage.Weapon.DMR.RFB",
+            "Meta.Damage.Bullet.308Win"
+          ],
+          "targetRequirements": "$undefined"
+        }
+      ]
+    },
+    {
+      "archetype": "Pistol",
+      "caliberKey": "9mm",
+      "damageFalloff": [
+        {
+          "multiplier": 1,
+          "rangeM": 0
+        },
+        {
+          "multiplier": 1,
+          "rangeM": 50
+        },
+        {
+          "multiplier": 0.3,
+          "rangeM": 1200
+        }
+      ],
+      "damageTag": "Meta.Damage.Weapon.Pistol.G60",
+      "effectiveRangeM": 50,
+      "fireModes": [
+        "SemiAutomatic"
+      ],
+      "fireRate": {
+        "source": "none"
+      },
+      "hitLocationProfile": "Meta.Damage.Weapon.Pistol",
+      "id": "Id.Item.Glock17",
+      "name": "GGX 17",
+      "rechamberTimeS": "$undefined",
+      "roundsPerMinute": "$undefined",
+      "slug": "glock17",
+      "unlockLevel": 1,
+      "weaponRules": [
+        {
+          "alignment": "$undefined",
+          "amount": 0,
+          "category": "Meta.Damage.Category.Weapon",
+          "customOperation": "$undefined",
+          "hitLocations": [
+            "Infantry"
+          ],
+          "operation": "Percentage_Ongoing",
+          "sourceRequirements": [
+            "Meta.Damage.Bullet.9mm",
+            "Meta.Damage.Weapon.Pistol.G60"
+          ],
+          "targetRequirements": "$undefined"
+        }
+      ]
+    },
+    {
+      "archetype": "Pistol",
+      "caliberKey": "45Colt",
+      "damageFalloff": "$undefined",
+      "damageTag": "Meta.Damage.Weapon.Pistol.Judge",
+      "effectiveRangeM": 50,
+      "fireModes": [
+        "SemiAutomatic"
+      ],
+      "fireRate": {
+        "roundsPerMinute": 200,
+        "shotsPerSecond": 3.3333333333333335,
+        "source": "exported"
+      },
+      "hitLocationProfile": "Meta.Damage.Weapon.Pistol",
+      "id": "Id.Item.Judge",
+      "name": "Judge",
+      "rechamberTimeS": 0.3,
+      "roundsPerMinute": 200,
+      "slug": "judge",
+      "unlockLevel": 18,
+      "weaponRules": [
+        {
+          "alignment": "$undefined",
+          "amount": 0,
+          "category": "Meta.Damage.Category.Weapon",
+          "customOperation": "$undefined",
+          "hitLocations": [
+            "Infantry"
+          ],
+          "operation": "Percentage_Ongoing",
+          "sourceRequirements": [
+            "Meta.Damage.Bullet.45Colt",
+            "Meta.Damage.Weapon.Pistol.Judge"
+          ],
+          "targetRequirements": "$undefined"
+        }
+      ]
+    },
+    {
+      "archetype": "Pistol",
+      "caliberKey": "45ACP",
+      "damageFalloff": [
+        {
+          "multiplier": 1,
+          "rangeM": 0
+        },
+        {
+          "multiplier": 1,
+          "rangeM": 50
+        },
+        {
+          "multiplier": 0.3,
+          "rangeM": 1200
+        }
+      ],
+      "damageTag": "Meta.Damage.Weapon.Pistol.M1911",
+      "effectiveRangeM": 50,
+      "fireModes": [
+        "SemiAutomatic"
+      ],
+      "fireRate": {
+        "roundsPerMinute": 430,
+        "shotsPerSecond": 7.166666666666667,
+        "source": "exported"
+      },
+      "hitLocationProfile": "Meta.Damage.Weapon.Pistol",
+      "id": "Id.Item.WEPN_026",
+      "name": "M1911",
+      "rechamberTimeS": "$undefined",
+      "roundsPerMinute": 430,
+      "slug": "m1911",
+      "unlockLevel": 40,
+      "weaponRules": [
+        {
+          "alignment": "$undefined",
+          "amount": 30,
+          "category": "Meta.Damage.Category.Weapon",
+          "customOperation": "$undefined",
+          "hitLocations": [
+            "Infantry"
+          ],
+          "operation": "Percentage_Ongoing",
+          "sourceRequirements": [
+            "Meta.Damage.Bullet.45ACP",
+            "Meta.Damage.Weapon.Pistol.M1911"
+          ],
+          "targetRequirements": "$undefined"
+        }
+      ]
+    },
+    {
+      "archetype": "Pistol",
+      "caliberKey": "9mm",
+      "damageFalloff": [
+        {
+          "multiplier": 1,
+          "rangeM": 0
+        },
+        {
+          "multiplier": 1,
+          "rangeM": 50
+        },
+        {
+          "multiplier": 0.3,
+          "rangeM": 1200
+        }
+      ],
+      "damageTag": "Meta.Damage.Weapon.Pistol.G60",
+      "effectiveRangeM": 50,
+      "fireModes": [
+        "Automatic",
+        "SemiAutomatic"
+      ],
+      "fireRate": {
+        "roundsPerMinute": 1200,
+        "shotsPerSecond": 20,
+        "source": "exported"
+      },
+      "hitLocationProfile": "Meta.Damage.Weapon.Pistol",
+      "id": "Id.Item.WEPN_032",
+      "name": "GGX 18",
+      "rechamberTimeS": "$undefined",
+      "roundsPerMinute": 1200,
+      "slug": "ggx-18",
+      "unlockLevel": 70,
+      "weaponRules": [
+        {
+          "alignment": "$undefined",
+          "amount": 0,
+          "category": "Meta.Damage.Category.Weapon",
+          "customOperation": "$undefined",
+          "hitLocations": [
+            "Infantry"
+          ],
+          "operation": "Percentage_Ongoing",
+          "sourceRequirements": [
+            "Meta.Damage.Bullet.9mm",
+            "Meta.Damage.Weapon.Pistol.G60"
+          ],
+          "targetRequirements": "$undefined"
+        }
+      ]
+    },
+    {
+      "archetype": "Pistol",
+      "caliberKey": "50AE",
+      "damageFalloff": [
+        {
+          "multiplier": 1,
+          "rangeM": 0
+        },
+        {
+          "multiplier": 1,
+          "rangeM": 100
+        },
+        {
+          "multiplier": 0.2,
+          "rangeM": 1200
+        }
+      ],
+      "damageTag": "Meta.Damage.Weapon.Pistol.Deagle",
+      "effectiveRangeM": "$undefined",
+      "fireModes": [
+        "SemiAutomatic"
+      ],
+      "fireRate": {
+        "roundsPerMinute": 267,
+        "shotsPerSecond": 4.45,
+        "source": "exported"
+      },
+      "hitLocationProfile": "Meta.Damage.Weapon.Pistol",
+      "id": "Id.Item.WEPN_027",
+      "name": "Deagle",
+      "rechamberTimeS": "$undefined",
+      "roundsPerMinute": 267,
+      "slug": "deagle",
+      "unlockLevel": 85,
+      "weaponRules": []
+    },
+    {
+      "archetype": "Bow",
+      "caliberKey": "Arrow",
+      "damageFalloff": [
+        {
+          "multiplier": 1,
+          "rangeM": 0
+        },
+        {
+          "multiplier": 1,
+          "rangeM": 100
+        },
+        {
+          "multiplier": 0.2,
+          "rangeM": 1200
+        }
+      ],
+      "damageTag": "Meta.Damage.Weapon.CombatBow",
+      "effectiveRangeM": "$undefined",
+      "fireModes": [
+        "SemiAutomatic"
+      ],
+      "fireRate": {
+        "roundsPerMinute": 90,
+        "shotsPerSecond": 1.5,
+        "source": "exported"
+      },
+      "hitLocationProfile": "Meta.Damage.Weapon.CombatBow",
+      "id": "Id.Item.CombatBow",
+      "name": "复合弓",
+      "rechamberTimeS": "$undefined",
+      "roundsPerMinute": 90,
+      "slug": "combatbow",
+      "unlockLevel": 17,
+      "weaponRules": []
+    },
+    {
+      "archetype": "LMG",
+      "caliberKey": "556mm",
+      "damageFalloff": [
+        {
+          "multiplier": 1,
+          "rangeM": 0
+        },
+        {
+          "multiplier": 1,
+          "rangeM": 700
+        },
+        {
+          "multiplier": 0.2,
+          "rangeM": 1200
+        }
+      ],
+      "damageTag": "Meta.Damage.Weapon.LMG.M249",
+      "effectiveRangeM": 700,
+      "fireModes": [
+        "Automatic",
+        "SemiAutomatic"
+      ],
+      "fireRate": {
+        "roundsPerMinute": 850,
+        "shotsPerSecond": 14.166666666666666,
+        "source": "exported"
+      },
+      "hitLocationProfile": "Meta.Damage.Weapon.LMG",
+      "id": "Id.Item.M249",
+      "name": "M249 SAW",
+      "rechamberTimeS": "$undefined",
+      "roundsPerMinute": 850,
+      "slug": "m249",
+      "unlockLevel": 15,
+      "weaponRules": [
+        {
+          "alignment": "$undefined",
+          "amount": 0,
+          "category": "Meta.Damage.Category.Weapon",
+          "customOperation": "$undefined",
+          "hitLocations": [
+            "Arm",
+            "Leg",
+            "Neck",
+            "Pelvis",
+            "Torso"
+          ],
+          "operation": "Percentage_Ongoing",
+          "sourceRequirements": [
+            "Meta.Damage.Bullet.556mm",
+            "Meta.Damage.Weapon.LMG.M249"
+          ],
+          "targetRequirements": "$undefined"
+        }
+      ]
+    },
+    {
+      "archetype": "LMG",
+      "caliberKey": "762x54mm",
+      "damageFalloff": [
+        {
+          "multiplier": 1,
+          "rangeM": 0
+        },
+        {
+          "multiplier": 1,
+          "rangeM": 1000
+        },
+        {
+          "multiplier": 0.2,
+          "rangeM": 1500
+        }
+      ],
+      "damageTag": "Meta.Damage.Weapon.LMG.LMG_02",
+      "effectiveRangeM": 1000,
+      "fireModes": [
+        "Automatic",
+        "SemiAutomatic"
+      ],
+      "fireRate": "$6:props:children:2:props:payload:weapons:20:fireRate",
+      "hitLocationProfile": "Meta.Damage.Weapon.LMG",
+      "id": "Id.Item.LMG_02",
+      "name": "PKM",
+      "rechamberTimeS": 0.25,
+      "roundsPerMinute": "$undefined",
+      "slug": "pkm",
+      "unlockLevel": 30,
+      "weaponRules": [
+        {
+          "alignment": "$undefined",
+          "amount": 0,
+          "category": "Meta.Damage.Category.Weapon",
+          "customOperation": "$undefined",
+          "hitLocations": [
+            "Infantry"
+          ],
+          "operation": "Percentage_Ongoing",
+          "sourceRequirements": [
+            "Meta.Damage.Bullet.762x54mm",
+            "Meta.Damage.Weapon.LMG.LMG_02"
+          ],
+          "targetRequirements": "$undefined"
+        }
+      ]
+    },
+    {
+      "archetype": "Shotgun",
+      "caliberKey": "12g",
+      "damageFalloff": [
+        {
+          "multiplier": 1,
+          "rangeM": 0
+        },
+        {
+          "multiplier": 1,
+          "rangeM": 70
+        },
+        {
+          "multiplier": 0.2,
+          "rangeM": 1200
+        }
+      ],
+      "damageTag": "Meta.Damage.Weapon.Shotgun.M12G",
+      "effectiveRangeM": "$undefined",
+      "fireModes": [
+        "SemiAutomatic"
+      ],
+      "fireRate": {
+        "roundsPerMinute": 900,
+        "shotsPerSecond": 15,
+        "source": "exported"
+      },
+      "hitLocationProfile": "Meta.Damage.Weapon.Shotgun",
+      "id": "Id.Item.MP43",
+      "name": "MP43",
+      "rechamberTimeS": 0.2,
+      "roundsPerMinute": 900,
+      "slug": "mp43",
+      "unlockLevel": null,
+      "weaponRules": [
+        {
+          "alignment": "$undefined",
+          "amount": 0,
+          "category": "Meta.Damage.Category.Weapon",
+          "customOperation": "$undefined",
+          "hitLocations": [
+            "Infantry"
+          ],
+          "operation": "Percentage_Ongoing",
+          "sourceRequirements": [
+            "Meta.Damage.Weapon.Shotgun.M12G"
+          ],
+          "targetRequirements": "$undefined"
+        }
+      ]
+    },
+    {
+      "archetype": "Shotgun",
+      "caliberKey": "12g",
+      "damageFalloff": [
+        {
+          "multiplier": 1,
+          "rangeM": 0
+        },
+        {
+          "multiplier": 1,
+          "rangeM": 70
+        },
+        {
+          "multiplier": 0.2,
+          "rangeM": 1200
+        }
+      ],
+      "damageTag": "Meta.Damage.Weapon.Shotgun.M12G",
+      "effectiveRangeM": 70,
+      "fireModes": [
+        "SemiAutomatic"
+      ],
+      "fireRate": {
+        "roundsPerMinute": 120,
+        "shotsPerSecond": 2,
+        "source": "exported"
+      },
+      "hitLocationProfile": "Meta.Damage.Weapon.Shotgun",
+      "id": "Id.Item.M500",
+      "name": "M500",
+      "rechamberTimeS": "$undefined",
+      "roundsPerMinute": 120,
+      "slug": "m500",
+      "unlockLevel": 10,
+      "weaponRules": [
+        {
+          "alignment": "$undefined",
+          "amount": 0,
+          "category": "Meta.Damage.Category.Weapon",
+          "customOperation": "$undefined",
+          "hitLocations": [
+            "Infantry"
+          ],
+          "operation": "Percentage_Ongoing",
+          "sourceRequirements": [
+            "Meta.Damage.Weapon.Shotgun.M12G"
+          ],
+          "targetRequirements": "$undefined"
+        }
+      ]
+    },
+    {
+      "archetype": "Launcher",
+      "caliberKey": "93mm",
+      "damageFalloff": "$undefined",
+      "damageTag": "Meta.Damage.Weapon.Launcher.AT4",
+      "effectiveRangeM": 300,
+      "fireModes": [
+        "SemiAutomatic"
+      ],
+      "fireRate": {
+        "roundsPerMinute": 100,
+        "shotsPerSecond": 1.6666666666666667,
+        "source": "exported"
+      },
+      "hitLocationProfile": "Meta.Damage.Weapon.Launcher",
+      "id": "Id.Item.RPG7",
+      "name": "RPG-7",
+      "rechamberTimeS": "$undefined",
+      "roundsPerMinute": 100,
+      "slug": "rpg7",
+      "unlockLevel": 5,
+      "weaponRules": []
+    },
+    {
+      "archetype": "Launcher",
+      "caliberKey": "72mm",
+      "damageFalloff": "$undefined",
+      "damageTag": "Meta.Damage.Weapon.Launcher.AT4",
+      "effectiveRangeM": 1000,
+      "fireModes": [
+        "SemiAutomatic"
+      ],
+      "fireRate": {
+        "roundsPerMinute": 100,
+        "shotsPerSecond": 1.6666666666666667,
+        "source": "exported"
+      },
+      "hitLocationProfile": "Meta.Damage.Weapon.Launcher",
+      "id": "Id.Item.Launcher_04",
+      "name": "9K333 Verba",
+      "rechamberTimeS": "$undefined",
+      "roundsPerMinute": 100,
+      "slug": "9k333-verba",
+      "unlockLevel": 16,
+      "weaponRules": []
+    },
+    {
+      "archetype": "Launcher",
+      "caliberKey": "84mm",
+      "damageFalloff": "$undefined",
+      "damageTag": "Meta.Damage.Weapon.Launcher.AT4",
+      "effectiveRangeM": 400,
+      "fireModes": [
+        "SemiAutomatic"
+      ],
+      "fireRate": {
+        "roundsPerMinute": 100,
+        "shotsPerSecond": 1.6666666666666667,
+        "source": "exported"
+      },
+      "hitLocationProfile": "Meta.Damage.Weapon.Launcher",
+      "id": "Id.Item.CGM4",
+      "name": "MAAWS",
+      "rechamberTimeS": "$undefined",
+      "roundsPerMinute": 100,
+      "slug": "cgm4",
+      "unlockLevel": 20,
+      "weaponRules": []
+    },
+    {
+      "archetype": "Launcher",
+      "caliberKey": "40mm",
+      "damageFalloff": "$undefined",
+      "damageTag": "Meta.Damage.Weapon.Launcher.AT4",
+      "effectiveRangeM": 400,
+      "fireModes": [
+        "SemiAutomatic"
+      ],
+      "fireRate": {
+        "roundsPerMinute": 75,
+        "shotsPerSecond": 1.25,
+        "source": "exported"
+      },
+      "hitLocationProfile": "Meta.Damage.Weapon.Launcher",
+      "id": "Id.Item.MMGL",
+      "name": "MGL-40",
+      "rechamberTimeS": "$undefined",
+      "roundsPerMinute": 75,
+      "slug": "mmgl",
+      "unlockLevel": 35,
+      "weaponRules": []
+    }
+  ]
+}

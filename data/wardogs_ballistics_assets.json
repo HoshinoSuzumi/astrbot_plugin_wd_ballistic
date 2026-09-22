@@ -1,0 +1,83 @@
+{
+  "https://cdn.pixel6.tools/wardogs/images/icons/t_ui_icon_ammobox_12g_slug_fmj.webp?v=1788285208": {
+    "path": "assets/wardogs/t_ui_icon_ammobox_12g_slug_fmj-47affd2eaa.webp",
+    "bytes": 43508,
+    "status": "downloaded"
+  },
+  "https://cdn.pixel6.tools/wardogs/images/icons/t_ui_icon_ammobox_12g_slug_green.webp?v=1788285208": {
+    "path": null,
+    "bytes": 0,
+    "status": "unavailable",
+    "error": "HTTP Error 404: Not Found"
+  },
+  "https://cdn.pixel6.tools/wardogs/images/icons/t_ui_icon_ammobox_5_56x45mm_ap.webp?v=1788285208": {
+    "path": "assets/wardogs/t_ui_icon_ammobox_5_56x45mm_ap-68be6416e0.webp",
+    "bytes": 48852,
+    "status": "downloaded"
+  },
+  "https://cdn.pixel6.tools/wardogs/images/icons/t_ui_icon_ammobox_5_56x45mm_fmj.webp?v=1788285208": {
+    "path": "assets/wardogs/t_ui_icon_ammobox_5_56x45mm_fmj-d62b8c86cd.webp",
+    "bytes": 46362,
+    "status": "downloaded"
+  },
+  "https://cdn.pixel6.tools/wardogs/images/icons/t_ui_icon_ammobox_5_56x45mm_hp.webp?v=1788285208": {
+    "path": "assets/wardogs/t_ui_icon_ammobox_5_56x45mm_hp-28bec1b2ea.webp",
+    "bytes": 48134,
+    "status": "downloaded"
+  },
+  "https://cdn.pixel6.tools/wardogs/images/icons/t_ui_icon_ghillie_body_bc.webp?v=1788285208": {
+    "path": "assets/wardogs/t_ui_icon_ghillie_body_bc-89fe1d0169.webp",
+    "bytes": 20024,
+    "status": "downloaded"
+  },
+  "https://cdn.pixel6.tools/wardogs/images/icons/t_ui_icon_ghillie_helmet_bc.webp?v=1788285208": {
+    "path": "assets/wardogs/t_ui_icon_ghillie_helmet_bc-7f1e094342.webp",
+    "bytes": 29420,
+    "status": "downloaded"
+  },
+  "https://cdn.pixel6.tools/wardogs/images/icons/t_ui_magazine_bow_bc.webp?v=1788285208": {
+    "path": "assets/wardogs/t_ui_magazine_bow_bc-6f5f71ac1d.webp",
+    "bytes": 21970,
+    "status": "downloaded"
+  },
+  "https://cdn.pixel6.tools/wardogs/images/icons/t_ui_vendor_armor_001a.webp?v=1788285208": {
+    "path": "assets/wardogs/t_ui_vendor_armor_001a-86eaae7f13.webp",
+    "bytes": 9914,
+    "status": "downloaded"
+  },
+  "https://cdn.pixel6.tools/wardogs/images/icons/t_ui_vendor_armor_002a.webp?v=1788285208": {
+    "path": "assets/wardogs/t_ui_vendor_armor_002a-0168087907.webp",
+    "bytes": 10038,
+    "status": "downloaded"
+  },
+  "https://cdn.pixel6.tools/wardogs/images/icons/t_ui_vendor_armor_003a.webp?v=1788285208": {
+    "path": "assets/wardogs/t_ui_vendor_armor_003a-ef387b4005.webp",
+    "bytes": 11374,
+    "status": "downloaded"
+  },
+  "https://cdn.pixel6.tools/wardogs/images/icons/t_ui_vendor_armor_004a.webp?v=1788285208": {
+    "path": "assets/wardogs/t_ui_vendor_armor_004a-76bba5aac0.webp",
+    "bytes": 10832,
+    "status": "downloaded"
+  },
+  "https://cdn.pixel6.tools/wardogs/images/icons/t_ui_vendor_helmet_001a.webp?v=1788285208": {
+    "path": "assets/wardogs/t_ui_vendor_helmet_001a-8a50201bdb.webp",
+    "bytes": 7408,
+    "status": "downloaded"
+  },
+  "https://cdn.pixel6.tools/wardogs/images/icons/t_ui_vendor_helmet_002a.webp?v=1788285208": {
+    "path": "assets/wardogs/t_ui_vendor_helmet_002a-2a49695772.webp",
+    "bytes": 8118,
+    "status": "downloaded"
+  },
+  "https://cdn.pixel6.tools/wardogs/images/icons/t_ui_vendor_helmet_003a.webp?v=1788285208": {
+    "path": "assets/wardogs/t_ui_vendor_helmet_003a-438bc55060.webp",
+    "bytes": 10608,
+    "status": "downloaded"
+  },
+  "https://cdn.pixel6.tools/wardogs/images/icons/t_ui_vendor_helmet_004a.webp?v=1788285208": {
+    "path": "assets/wardogs/t_ui_vendor_helmet_004a-cf46fcdbf9.webp",
+    "bytes": 8656,
+    "status": "downloaded"
+  }
+}

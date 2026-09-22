@@ -11,6 +11,7 @@ from .ballistic import (
     CoordinateParseError,
     parse_weapon_argument,
 )
+from .damage import DamageCalculator, DamageQueryError, parse_damage_arguments
 from .range_card import RANGE_CARD_TEMPLATE, build_range_card_context
 
 
@@ -23,6 +24,7 @@ class WARDOGSBallisticPlugin(Star):
     def __init__(self, context: Context):
         super().__init__(context)
         self.calculator = BallisticCalculator(cache_ttl_seconds=105 * 60)
+        self.damage_calculator = DamageCalculator()
 
     @filter.command_group("wd", alias={"wardogs", "战狗"})
     def wardogs():
@@ -66,6 +68,19 @@ class WARDOGSBallisticPlugin(Star):
             return
 
         yield event.image_result(image_url)
+
+    @wardogs.command("damage", alias={"伤害", "伤害计算"})
+    async def wardogs_damage(self, event: AstrMessageEvent, arguments: GreedyStr):
+        """输入：<武器> [fmj|hp|ap] [部位] [护甲] [距离] [生命]。"""
+        try:
+            result = self.damage_calculator.calculate(*parse_damage_arguments(arguments))
+        except DamageQueryError as exc:
+            yield event.plain_result(
+                f"{exc}\n示例：/wd damage m4 穿甲 头部 helmet4 100 100\n"
+                "别名：伤害；AP/穿甲/穿甲弹；HP/肉弹/肉伤；helmet4/四级头。"
+            )
+            return
+        yield event.plain_result(result.format_message())
 
     @staticmethod
     def _user_key(event: AstrMessageEvent) -> str:

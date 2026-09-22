@@ -18,3 +18,18 @@ def test_hp_alias_is_hollow_point():
     result = DamageCalculator().calculate(*parse_damage_arguments("m4 肉伤 上躯干"))
     assert result.ammo == "HollowPoint"
     assert result.damage == pytest.approx(61.6)
+
+def test_describes_weapon_and_armour_using_localized_aliases():
+    calculator = DamageCalculator()
+    assert "武器：M4" in calculator.describe("m4")
+    helmet = calculator.describe("四级头")
+    assert "头盔：4 级头盔" in helmet
+    assert "减伤：65%" in helmet
+    assert "防弹衣：3 级防弹衣" in calculator.describe("armor3")
+
+def test_lists_equipment_by_category_or_all():
+    calculator = DamageCalculator()
+    assert "M4" in calculator.list_equipment("武器")
+    assert "4 级头盔" in calculator.list_equipment("头盔")
+    all_equipment = calculator.list_equipment()
+    assert "武器：" in all_equipment and "防弹衣：" in all_equipment

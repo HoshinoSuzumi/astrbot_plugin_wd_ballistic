@@ -48,6 +48,73 @@ class DamageCalculator:
         found=self.weapons.get(key)
         if not found: raise DamageQueryError(f"未知武器：{value}")
         return found
+    def describe(self, value: str) -> str:
+        """Return a compact, player-facing record for a weapon or armour item."""
+        key = value.casefold().strip()
+        weapon = self.weapons.get(key)
+        if weapon:
+            rounds = self.data["roundsByCaliber"].get(weapon["caliberKey"], [])
+            ammo = "/".join(round_["ammoType"] for round_ in rounds)
+            falloff = weapon.get("damageFalloff")
+            curve = "无作者曲线" if not isinstance(falloff, list) else " → ".join(
+                f"{point['rangeM']:g}m×{point['multiplier']:g}" for point in falloff
+            )
+            rpm = weapon.get("roundsPerMinute")
+            rpm_text = "未提供" if not isinstance(rpm, (int, float)) else f"{rpm:g} RPM"
+            unlock = weapon.get("unlockLevel")
+            unlock_text = "默认/未提供" if unlock is None else f"等级 {unlock}"
+            return "\n".join((
+                f"武器：{weapon['name']}", f"类别：{weapon['archetype']}",
+                f"口径：{weapon['caliberKey']}（{ammo}）", f"射速：{rpm_text}",
+                f"有效距离：{weapon.get('effectiveRangeM', '未提供')} m", f"解锁：{unlock_text}",
+                f"伤害衰减：{curve}", f"命中倍率配置：{weapon['hitLocationProfile']}",
+            ))
+        armor = self._armor_by_name(key)
+        if armor:
+            reduction = armor.get("damageReductionPct")
+            reduction_text = "特殊规则" if reduction == UNDEFINED else f"{reduction}%"
+            covered = "、".join(armor["coveredHitLocations"]) or "特殊规则"
+            durability = armor.get("durability")
+            durability_text = "未提供" if durability == UNDEFINED else str(durability)
+            kind = "头盔" if armor["kind"] == "helmet" else "防弹衣"
+            return "\n".join((
+                f"{kind}：{armor['name']}", f"减伤：{reduction_text}",
+                f"耐久：{durability_text}", f"覆盖部位：{covered}",
+                f"规则标签：{armor['damageContextTag']}",
+            ))
+        raise DamageQueryError(f"未找到武器或护甲：{value}")
+
+    def list_equipment(self, category: str = "") -> str:
+        """Render the supported weapon/armour catalogue without remote access."""
+        key = category.casefold().strip()
+        weapon_keys = {"", "weapon", "weapons", "武器", "枪械", "枪"}
+        helmet_keys = {"helmet", "helmets", "头盔", "头"}
+        armor_keys = {"armor", "body", "vest", "防弹衣", "护甲", "甲"}
+        if key not in weapon_keys | helmet_keys | armor_keys:
+            raise DamageQueryError("分类应为：武器、头盔或防弹衣")
+        sections: list[str] = []
+        if key in weapon_keys:
+            grouped: dict[str, list[str]] = {}
+            for weapon in self.data["weapons"]:
+                grouped.setdefault(weapon["archetype"], []).append(weapon["name"])
+            sections.append("武器：\n" + "\n".join(
+                f"- {kind}：{'、'.join(names)}" for kind, names in grouped.items()
+            ))
+        if key in helmet_keys or not key:
+            sections.append("头盔：\n- " + "\n- ".join(item["name"] for item in self.data["helmets"]))
+        if key in armor_keys or not key:
+            sections.append("防弹衣：\n- " + "\n- ".join(item["name"] for item in self.data["bodyArmor"]))
+        return "\n\n".join(sections)
+
+    def _armor_by_name(self, value: str) -> dict | None:
+        normalized = value.replace(" ", "").replace("一级", "1级").replace("二级", "2级").replace("三级", "3级").replace("四级", "4级")
+        for pool, prefix in ((self.data["helmets"], "helmet"), (self.data["bodyArmor"], "armor")):
+            for index, item in enumerate(pool, 1):
+                aliases = {item["name"].casefold().replace(" ", ""), f"{prefix}{index}"}
+                if prefix == "helmet": aliases |= {f"{index}级头", f"头{index}", f"头盔{index}"}
+                else: aliases |= {f"{index}级甲", f"甲{index}", f"body{index}", f"防弹衣{index}"}
+                if normalized in aliases: return item
+        return None
     def calculate(self, weapon_name: str, ammo="FMJ", location="Torso.Upper", armor=None, range_m=50, health=100) -> DamageResult:
         w=self.weapon(weapon_name); ammo=AMMO_ALIASES.get(ammo.casefold(), ammo)
         location=LOCATION_ALIASES.get(location.casefold(), location)

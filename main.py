@@ -82,6 +82,28 @@ class WARDOGSBallisticPlugin(Star):
             return
         yield event.plain_result(result.format_message())
 
+    @wardogs.command("info", alias={"查询", "数据", "属性"})
+    async def wardogs_info(self, event: AstrMessageEvent, name: GreedyStr):
+        """输入：武器名、武器 slug、头盔或防弹衣名称。"""
+        try:
+            message = self.damage_calculator.describe(name)
+        except DamageQueryError as exc:
+            yield event.plain_result(
+                f"{exc}\n示例：/wd info m4\n/wd 查询 四级头\n/wd 数据 armor3"
+            )
+            return
+        yield event.plain_result(message)
+
+    @wardogs.command("list", alias={"列表", "装备列表"})
+    async def wardogs_list(self, event: AstrMessageEvent, category: GreedyStr = ""):
+        """输入：[武器|头盔|防弹衣]，省略时列出全部可查询装备。"""
+        try:
+            message = self.damage_calculator.list_equipment(category)
+        except DamageQueryError as exc:
+            yield event.plain_result(f"{exc}\n示例：/wd list 武器")
+            return
+        yield event.plain_result(message)
+
     @staticmethod
     def _user_key(event: AstrMessageEvent) -> str:
         """Namespace the sender ID by platform so IDs cannot collide across adapters."""

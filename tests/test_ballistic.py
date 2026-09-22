@@ -12,6 +12,7 @@ from ballistic import (
     parse_weapon_argument,
     strip_command_prefix,
 )
+from range_card import RANGE_CARD_TEMPLATE, build_range_card_context
 
 
 @pytest.mark.parametrize(
@@ -120,3 +121,32 @@ def test_sph2_preserves_the_two_community_high_arc_values_at_maximum_range():
     assert "射程密位(高弹道)：610–620 MIL" in result.format_message()
     offset_result = BallisticCalculator().calculate("u", SPH2, "60 60 86.29 60")
     assert "射程密位(高弹道)：610–620 MIL" in offset_result.format_message()
+
+
+def test_range_card_marks_l81_interpolated_sight_setting():
+    result = BallisticCalculator().calculate("u", L81, "0 0 0 4.5")
+    context = build_range_card_context(result)
+
+    assert context["weapon"] == "L81"
+    assert context["distance"] == "450 M"
+    assert len(context["trajectories"]) == 1
+    trajectory = context["trajectories"][0]
+    assert trajectory["label"] == "射程密位（L81）"
+    assert trajectory["setting"] == "525 MIL"
+    assert trajectory["markers"] == ({"label": "525", "position": 53.571},)
+    assert "{% for marker in trajectory.markers %}" in RANGE_CARD_TEMPLATE
+
+
+def test_range_card_shows_both_sph2_trajectory_rulers_when_available():
+    result = BallisticCalculator().calculate("u", SPH2, "0 0 15 15")
+    context = build_range_card_context(result)
+
+    assert [item["label"] for item in context["trajectories"]] == [
+        "射程密位(低弹道)",
+        "射程密位(高弹道)",
+    ]
+
+
+def test_out_of_range_solution_has_no_ruler_data():
+    result = BallisticCalculator().calculate("u", L81, "0 0 10 0")
+    assert build_range_card_context(result)["trajectories"] == ()

@@ -1,10 +1,10 @@
 name: astrbot_plugin_wd_ballistic
 display_name: WARDOGS 迫击炮弹道计算机
 desc: |
-  为《WARDOGS》提供迫击炮炮位与目标位的方位、距离计算。
+  为《WARDOGS》提供 L81 与 SPH-2 炮位、目标位的方位、距离计算与瞄准标尺图。
   支持 /wd bc 指令和多种 x/y 坐标输入格式，并会按用户缓存炮位 105 分钟。
 short_desc: WARDOGS 迫击炮方位距离计算
-version: 1.2.0
+version: 1.3.0
 author: TimothyYin
 repo: https://github.com/HoshinoSuzumi/astrbot_plugin_wd_ballistic
 astrbot_version: ">=4.13,<5"

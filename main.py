@@ -1,5 +1,7 @@
 """AstrBot entry point for the WARDOGS mortar calculator."""
 
+import logging
+
 from astrbot.api.event import AstrMessageEvent, filter
 from astrbot.api.star import Context, Star
 from astrbot.core.star.filter.command import GreedyStr
@@ -9,6 +11,10 @@ from .ballistic import (
     CoordinateParseError,
     parse_weapon_argument,
 )
+from .range_card import RANGE_CARD_TEMPLATE, build_range_card_context
+
+
+logger = logging.getLogger(__name__)
 
 
 class WARDOGSBallisticPlugin(Star):
@@ -44,6 +50,22 @@ class WARDOGSBallisticPlugin(Star):
             return
 
         yield event.plain_result(result.format_message())
+        if not result.elevations:
+            return
+
+        try:
+            image_url = await self.html_render(
+                RANGE_CARD_TEMPLATE,
+                build_range_card_context(result),
+                options={"type": "png", "animations": "disabled"},
+            )
+        except Exception:
+            # The textual firing solution remains useful if the optional
+            # AstrBot HTML-to-image service is unavailable or misconfigured.
+            logger.exception("Failed to render WARDOGS sight ruler")
+            return
+
+        yield event.image_result(image_url)
 
     @staticmethod
     def _user_key(event: AstrMessageEvent) -> str:

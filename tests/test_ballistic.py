@@ -135,16 +135,16 @@ def test_range_card_marks_l81_interpolated_sight_setting():
     assert trajectory["setting"] == "525 MIL"
     assert trajectory["markers"] == ({"label": "525", "position": 50.0},)
     assert [tick["label"] for tick in trajectory["ticks"]] == [
-        "550",
-        "540",
-        "530",
-        "520",
-        "510",
         "500",
+        "510",
+        "520",
+        "530",
+        "540",
+        "550",
     ]
     assert [tick["label"] for tick in trajectory["ticks"] if tick["is_bound"]] == [
-        "530",
         "520",
+        "530",
     ]
     assert trajectory["ticks"][0]["opacity"] == 0.38
     assert trajectory["ticks"][1]["opacity"] == 0.68

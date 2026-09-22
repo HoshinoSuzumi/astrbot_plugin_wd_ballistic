@@ -139,8 +139,8 @@ def _local_ruler(
     span = max(max_display - min_display, 1)
 
     def position(mil: float) -> float:
-        # Higher sight settings are shown at the top of the vertical ruler.
-        return max(0.0, min(100.0, (max_display - mil) / span * 100))
+        # Sight settings increase from top to bottom, matching the in-game ruler.
+        return max(0.0, min(100.0, (mil - min_display) / span * 100))
 
     bounds = {values[lower_index], values[upper_index]}
     return {
@@ -151,11 +151,11 @@ def _local_ruler(
                 "is_bound": mil in bounds,
                 "opacity": _tick_opacity(values.index(mil), lower_index, upper_index),
             }
-            for mil in reversed(displayed)
+            for mil in displayed
         ),
         "markers": tuple(
             {"label": f"{mil:.0f}", "position": round(position(mil), 3)}
-            for mil in sorted(target_mils, reverse=True)
+            for mil in sorted(target_mils)
         ),
     }
 

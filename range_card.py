@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-import math
+from bisect import bisect_left
 from typing import TYPE_CHECKING, Any
 
 if TYPE_CHECKING:
@@ -36,24 +36,23 @@ RANGE_CARD_TEMPLATE = """
     font-size: 18px;
   }
   .summary strong { color: #f5f8ef; }
-  .trajectory { margin-top: 30px; }
+  .trajectory { margin-top: 32px; }
   .trajectory-title { display: flex; justify-content: space-between; font-size: 20px; }
   .trajectory-title .setting { color: #ffcf70; font-weight: 700; }
-  .ruler-wrap { position: relative; margin: 44px 16px 28px; }
-  .ruler {
-    height: 24px;
-    border: 1px solid #849276;
-    background-color: #2b382c;
-    background-image: repeating-linear-gradient(90deg, transparent 0, transparent 9px,
-      rgba(230, 239, 218, .42) 9px, rgba(230, 239, 218, .42) 10px);
-  }
-  .tick { position: absolute; top: 30px; color: #aebaa6; font-size: 15px; transform: translateX(-50%); }
-  .tick::before { content: ""; position: absolute; height: 9px; border-left: 1px solid #aebaa6; top: -10px; left: 50%; }
-  .pointer { position: absolute; top: -29px; transform: translateX(-50%); text-align: center; }
-  .pointer .value { display: block; white-space: nowrap; color: #fff5d8; font-size: 19px; font-weight: 700; }
-  .pointer .arrow { margin: 4px auto 0; width: 0; height: 0; border-left: 10px solid transparent;
-    border-right: 10px solid transparent; border-top: 15px solid #e15140; }
-  .range { display: flex; justify-content: space-between; margin-top: 9px; color: #aebaa6; font-size: 15px; }
+  .ruler-wrap { position: relative; height: 388px; margin: 26px 90px 18px; }
+  .ruler { position: absolute; left: 50%; top: 0; bottom: 0; width: 8px; transform: translateX(-50%);
+    border: 1px solid #849276; background: linear-gradient(#607257, #293729 12%, #293729 88%, #607257); }
+  .tick { position: absolute; left: 50%; width: 168px; height: 1px; border-top: 1px solid #d1dbc8;
+    transform: translateY(-50%); color: #dce6d4; font-size: 17px; }
+  .tick::after { content: attr(data-mil); position: absolute; left: 182px; top: -12px; white-space: nowrap; }
+  .tick.major { width: 206px; border-color: #f1f6eb; }
+  .pointer { position: absolute; left: 50%; width: 250px; height: 1px; border-top: 2px solid #e15140;
+    transform: translateY(-50%); }
+  .pointer .value { position: absolute; right: 264px; top: -15px; white-space: nowrap; color: #fff5d8;
+    font-size: 19px; font-weight: 700; }
+  .pointer .arrow { position: absolute; left: -2px; top: -7px; width: 0; height: 0;
+    border-top: 7px solid transparent; border-bottom: 7px solid transparent; border-left: 12px solid #e15140; }
+  .relation { margin: 0 16px; color: #aebaa6; font-size: 15px; text-align: center; }
   .footnote { margin-top: 30px; color: #93a08d; font-size: 14px; }
 </style>
 <section class="card">
@@ -73,15 +72,15 @@ RANGE_CARD_TEMPLATE = """
     <div class="ruler-wrap">
       <div class="ruler"></div>
       {% for tick in trajectory.ticks %}
-      <span class="tick" style="left: {{ tick.position }}%">{{ tick.label }}</span>
+      <span class="tick {% if tick.is_bound %}major{% endif %}" data-mil="{{ tick.label }} MIL" style="top: {{ tick.position }}%; opacity: {{ tick.opacity }}"></span>
       {% endfor %}
       {% for marker in trajectory.markers %}
-      <div class="pointer" style="left: {{ marker.position }}%">
-        <span class="value">{{ marker.label }}</span><span class="arrow"></span>
+      <div class="pointer" style="top: {{ marker.position }}%">
+        <span class="value">目标 {{ marker.label }} MIL</span><span class="arrow"></span>
       </div>
       {% endfor %}
-      <div class="range"><span>{{ trajectory.min_mil }} MIL</span><span>{{ trajectory.max_mil }} MIL</span></div>
     </div>
+    <div class="relation">目标位置按相邻射表刻度线性插值；标尺向上下各延伸最多两个刻度。</div>
   </div>
   {% endfor %}
   <div class="footnote">标尺按当前武器射表插值；未计算高差、地形或车辆姿态修正。</div>
@@ -105,27 +104,11 @@ def build_range_card_context(result: CalculationResult) -> dict[str, Any]:
         if not mils:
             continue
 
-        table_mils = tuple(mil for _, mil in trajectory.table)
-        min_mil, max_mil = min(table_mils), max(table_mils)
-        span = max(max_mil - min_mil, 1)
-
-        def position(mil: float) -> float:
-            return max(0.0, min(100.0, (mil - min_mil) / span * 100))
-
         trajectories.append(
             {
                 "label": trajectory.label,
                 "setting": " / ".join(f"{mil:.0f} MIL" for mil in mils),
-                "min_mil": min_mil,
-                "max_mil": max_mil,
-                "ticks": _ruler_ticks(min_mil, max_mil, position),
-                "markers": tuple(
-                    {
-                        "label": f"{mil:.0f}",
-                        "position": round(position(mil), 3),
-                    }
-                    for mil in sorted(mils)
-                ),
+                **_local_ruler(tuple(mil for _, mil in trajectory.table), mils),
             }
         )
 
@@ -138,14 +121,50 @@ def build_range_card_context(result: CalculationResult) -> dict[str, Any]:
     }
 
 
-def _ruler_ticks(min_mil: int, max_mil: int, position) -> tuple[dict[str, Any], ...]:
-    """Return five readable major ticks, including both endpoints."""
-    if min_mil == max_mil:
-        return ({"label": str(min_mil), "position": 0.0},)
-    step = max(10, math.ceil((max_mil - min_mil) / 4 / 10) * 10)
-    values = list(range(min_mil, max_mil + 1, step))
-    if values[-1] != max_mil:
-        values.append(max_mil)
-    return tuple(
-        {"label": str(mil), "position": round(position(mil), 3)} for mil in values
-    )
+def _local_ruler(table_mils: tuple[int, ...], target_mils: tuple[float, ...]) -> dict[str, Any]:
+    """Build a short local scale around the target's enclosing table marks."""
+    values = tuple(sorted(set(table_mils)))
+    primary = target_mils[0]
+    insertion = bisect_left(values, primary)
+
+    if insertion < len(values) and values[insertion] == primary:
+        lower_index = max(0, insertion - 1)
+        upper_index = min(len(values) - 1, insertion + 1)
+    else:
+        lower_index = max(0, insertion - 1)
+        upper_index = min(len(values) - 1, insertion)
+
+    start = max(0, lower_index - 2)
+    end = min(len(values) - 1, upper_index + 2)
+    displayed = values[start : end + 1]
+    min_display, max_display = displayed[0], displayed[-1]
+    span = max(max_display - min_display, 1)
+
+    def position(mil: float) -> float:
+        # Higher sight settings are shown at the top of the vertical ruler.
+        return max(0.0, min(100.0, (max_display - mil) / span * 100))
+
+    bounds = {values[lower_index], values[upper_index]}
+    return {
+        "ticks": tuple(
+            {
+                "label": str(mil),
+                "position": round(position(mil), 3),
+                "is_bound": mil in bounds,
+                "opacity": _tick_opacity(
+                    values.index(mil), lower_index, upper_index
+                ),
+            }
+            for mil in reversed(displayed)
+        ),
+        "markers": tuple(
+            {"label": f"{mil:.0f}", "position": round(position(mil), 3)}
+            for mil in sorted(target_mils, reverse=True)
+        ),
+    }
+
+
+def _tick_opacity(index: int, lower_index: int, upper_index: int) -> float:
+    """Fade extension ticks while retaining the target's enclosing marks."""
+    distance = min(abs(index - lower_index), abs(index - upper_index))
+    return 1.0 if distance == 0 else 0.68 if distance == 1 else 0.38
